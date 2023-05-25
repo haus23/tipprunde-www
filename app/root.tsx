@@ -8,10 +8,11 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="de">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="description" content="Tipprunde der Haus23 Freunde" />
         <Meta />
         <Links />
       </head>
