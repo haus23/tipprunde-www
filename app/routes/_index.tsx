@@ -6,8 +6,8 @@ export const meta: V2_MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', lineHeight: '1.8' }}>
-      <h1>runde.tips</h1>
+    <div className="container mx-auto mt-8 px-4">
+      <h1 className="text-2xl font-semibold">runde.tips</h1>
     </div>
   );
 }
