@@ -21,6 +21,16 @@ export default {
           foreground: 'hsl(var(--subtle-foreground))',
         },
 
+        accent: {
+          DEFAULT: 'hsl(var(--accent))',
+          foreground: 'hsl(var(--accent-foreground))',
+        },
+
+        'accent-subtle': {
+          DEFAULT: 'hsl(var(--accent-subtle))',
+          foreground: 'hsl(var(--accent-subtle-foreground))',
+        },
+
         line: 'hsl(var(--border))',
 
         /* -------------------------------------------- */
@@ -39,10 +49,7 @@ export default {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        accent: {
-          DEFAULT: 'hsl(var(--accent))',
-          foreground: 'hsl(var(--accent-foreground))',
-        },
+
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',

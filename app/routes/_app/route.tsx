@@ -1,5 +1,11 @@
 import { Outlet } from '@remix-run/react';
 import { AppHeader } from './app-header';
+import { json } from '@remix-run/node';
+import { fetchChampionships } from '~/backend/queries';
+
+export const loader = async () => {
+  return json(await fetchChampionships());
+};
 
 export default function AppLayout() {
   return (
