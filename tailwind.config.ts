@@ -31,16 +31,20 @@ export default {
           foreground: 'hsl(var(--accent-subtle-foreground))',
         },
 
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
+          hover: 'hsl(var(--primary-hover))',
+          active: 'hsl(var(--primary-active))',
+        },
+
         line: 'hsl(var(--border))',
+        ring: 'hsl(var(--ring))',
 
         /* -------------------------------------------- */
 
         input: 'hsl(var(--input))',
-        ring: 'hsl(var(--ring))',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
+
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',

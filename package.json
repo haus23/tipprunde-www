@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@haus23/tipprunde-types": "^0.9.0",
+    "@heroicons/react": "^2.0.18",
     "@remix-run/node": "^1.16.1",
     "@remix-run/react": "^1.16.1",
     "@remix-run/vercel": "^1.16.1",
@@ -31,9 +32,12 @@
     "@types/react": "^18.0.35",
     "@types/react-dom": "^18.0.11",
     "changelogen": "^0.5.3",
+    "clsx": "^1.2.1",
+    "cva": "npm:class-variance-authority@^0.6.0",
     "eslint": "^8.38.0",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0",
+    "tailwind-merge": "^1.12.0",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
   },
