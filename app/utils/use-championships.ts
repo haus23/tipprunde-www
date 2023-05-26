@@ -1,6 +1,6 @@
-import type { Championship } from '@haus23/tipprunde-types';
-import { useRouteLoaderData } from '@remix-run/react';
+import { getChampionships } from './route-match-helper';
+import { useMatches } from '@remix-run/react';
 
 export function useChampionships() {
-  return useRouteLoaderData('routes/_app') as Championship[];
+  return getChampionships(useMatches());
 }

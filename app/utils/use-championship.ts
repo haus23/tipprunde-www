@@ -1,8 +1,6 @@
-import { useChampionships } from './use-championships';
+import { useMatches } from '@remix-run/react';
+import { getChampionship } from './route-match-helper';
 
 export function useChampionship(championshipId?: string) {
-  const championships = useChampionships();
-
-  const championship = championships.find((c) => c.id === championshipId) || championships[0];
-  return championship;
+  return getChampionship(championshipId, useMatches());
 }
