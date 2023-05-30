@@ -1,5 +1,5 @@
 import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
-import { useLoaderData, useParams } from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 import { fetchChampionshipPlayers } from '~/backend/queries';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
@@ -14,9 +14,7 @@ export const loader = async ({ params }: LoaderArgs) => {
 };
 
 export default function Tabelle() {
-  const { championship: championshipId } = useParams();
-
-  const championship = useChampionship(championshipId);
+  const championship = useChampionship();
   const players = useLoaderData<typeof loader>();
 
   return (
