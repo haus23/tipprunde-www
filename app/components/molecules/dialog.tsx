@@ -1,5 +1,5 @@
-import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { forwardRef } from 'react';
+import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { cn } from '~/utils';
 
 const Dialog = DialogPrimitive.Root;
@@ -15,7 +15,7 @@ const DialogContent = forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        'fixed inset-4 mx-auto max-w-xl rounded-md bg-subtle shadow-md ring-1 ring-line animate-in focus:outline-none data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0',
+        'fixed inset-4 z-20 mx-auto max-w-xl rounded-md bg-subtle shadow-md ring-1 ring-line animate-in focus:outline-none data-[state=open]:fade-in-90 data-[state=open]:slide-in-from-bottom-10 sm:zoom-in-90 data-[state=open]:sm:slide-in-from-bottom-0',
         className
       )}
       {...props}
