@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v0.1.1
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.1.0...v0.1.1)
+
+
+### 🚀 Enhancements
+
+  - Introduce style system and add first component, a button ([aff9956](https://github.com/haus23/tipprunde/commit/aff9956))
+  - Add reusable dialog. ([d316dce](https://github.com/haus23/tipprunde/commit/d316dce))
+  - Add dialog to select championship. ([821da9e](https://github.com/haus23/tipprunde/commit/821da9e))
+
+### 🩹 Fixes
+
+  - **seo:** Provide page title ([99a07ae](https://github.com/haus23/tipprunde/commit/99a07ae))
+  - Hide scrollbars on desktop. ([caec90f](https://github.com/haus23/tipprunde/commit/caec90f))
+
+### 💅 Refactors
+
+  - Extract championship data from route-matches ([e1b5e02](https://github.com/haus23/tipprunde/commit/e1b5e02))
+  - Make use-championship more state-like. ([7056730](https://github.com/haus23/tipprunde/commit/7056730))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.1.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.0.2...v0.1.0)
