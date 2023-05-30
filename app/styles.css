@@ -84,6 +84,14 @@
     --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
   }
+
+  html {
+    scrollbar-width: 0;
+  }
+
+  body::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .mauve {
