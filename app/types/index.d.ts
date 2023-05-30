@@ -3,3 +3,8 @@ declare namespace NodeJS {
     BACKEND_HOST_URL: string;
   }
 }
+
+declare module 'command-score' {
+  function commandScore(value: string, search: string): number;
+  export = commandScore;
+}

@@ -1,6 +1,5 @@
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { Button } from '~/components/atoms/button';
 import { Logo } from './logo';
+import { ChampionshipSelect } from './championship-select';
 
 export function AppHeader() {
   return (
@@ -10,10 +9,7 @@ export function AppHeader() {
         <h1 className="text-xl font-semibold">runde.tips</h1>
       </div>
       <div className="flex gap-x-2">
-        <Button variant="toolbar" className="space-x-2">
-          <MagnifyingGlassIcon className="h-6" />
-          <span className="hidden sm:block">Turnier</span>
-        </Button>
+        <ChampionshipSelect />
       </div>
     </div>
   );

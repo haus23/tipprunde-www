@@ -38,6 +38,12 @@ export default {
           active: 'hsl(var(--primary-active))',
         },
 
+        neutral: {
+          DEFAULT: 'hsl(var(--neutral))',
+          hover: 'hsl(var(--neutral-hover))',
+          active: 'hsl(var(--neutral-active))',
+        },
+
         line: 'hsl(var(--border))',
         ring: 'hsl(var(--ring))',
 
