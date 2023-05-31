@@ -1,4 +1,5 @@
 import { type V2_MetaFunction } from '@remix-run/node';
+import { Link } from '@remix-run/react';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
@@ -54,7 +55,14 @@ export default function Tabelle() {
             return (
               <tr key={p.id}>
                 <td className="px-4 text-right md:px-6">{currentRank}</td>
-                <td className="w-full px-4 py-2.5 md:px-6">{p.account.name}</td>
+                <td className="w-full px-4 py-2.5 md:px-6">
+                  <Link
+                    className="block hover:text-accent-foreground hover:underline"
+                    to={`spieler?name=${p.playerId}`}
+                  >
+                    {p.account.name}
+                  </Link>
+                </td>
                 {(championship.extraPointsPublished || championship.completed) && (
                   <td className="px-4 text-center md:px-6">{p.extraPoints}</td>
                 )}
