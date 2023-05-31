@@ -1,6 +1,40 @@
 # Changelog
 
 
+## v0.2.0
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.1.1...v0.2.0)
+
+
+### 🚀 Enhancements
+
+  - Add reusable select component. ([1889eac](https://github.com/haus23/tipprunde/commit/1889eac))
+  - Players view. Make current player selectable. ([e0d28a9](https://github.com/haus23/tipprunde/commit/e0d28a9))
+  - Use player name in title. ([3db6820](https://github.com/haus23/tipprunde/commit/3db6820))
+  - Add reusable accordin component. ([b87f00a](https://github.com/haus23/tipprunde/commit/b87f00a))
+  - Display matches. Tips are faked. ([dbc0eb5](https://github.com/haus23/tipprunde/commit/dbc0eb5))
+
+### 🩹 Fixes
+
+  - Add z-index higher than content ([17955e4](https://github.com/haus23/tipprunde/commit/17955e4))
+  - Remove active (focus) styling. ([2415e2c](https://github.com/haus23/tipprunde/commit/2415e2c))
+
+### 💅 Refactors
+
+  - Move loading into parent layout. ([6d7c95d](https://github.com/haus23/tipprunde/commit/6d7c95d))
+  - Optimize data loading. ([7bf687e](https://github.com/haus23/tipprunde/commit/7bf687e))
+  - Loading championship matches as well but deferred. ([61280f2](https://github.com/haus23/tipprunde/commit/61280f2))
+
+### 🏡 Chore
+
+  - Update deps. ([04d2927](https://github.com/haus23/tipprunde/commit/04d2927))
+  - Upgrade tipprunde types. ([b25756c](https://github.com/haus23/tipprunde/commit/b25756c))
+  - Adjust ECMAScript version. ([41c5f8b](https://github.com/haus23/tipprunde/commit/41c5f8b))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.1.1
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.1.0...v0.1.1)
