@@ -1,5 +1,6 @@
-import { type V2_MetaFunction } from '@remix-run/node';
-import { Await, Link, useSearchParams } from '@remix-run/react';
+import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
+import { Await, Link, useLoaderData, useSearchParams } from '@remix-run/react';
+import { fetchPlayerTips } from '~/backend/queries';
 
 import { Select } from '~/components/elements/select';
 import {
@@ -22,10 +23,16 @@ export const meta: V2_MetaFunction = ({ matches, params, location }) => {
   return [{ title: `Tipps ${player.account.name} ${championship.name} - runde.tips` }];
 };
 
+export const loader = async ({ params, request }: LoaderArgs) => {
+  const accountId = new URL(request.url).searchParams.get('name');
+  return json(await fetchPlayerTips(accountId, params.championship));
+};
+
 export default function Spieler() {
   const championship = useChampionship();
   const players = useChampionshipPlayers();
   const matchesPromise = useChampionshipMatches();
+  const tips = useLoaderData<typeof loader>();
 
   const [searchParams, setSearchParams] = useSearchParams();
 
@@ -37,9 +44,16 @@ export default function Spieler() {
     setSearchParams({ ...searchParams, name: accId });
   }
 
+  function scrollToRound(roundId: string) {
+    setTimeout(() => {
+      const elem = document.getElementById(roundId);
+      elem?.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    }, 250);
+  }
+
   return (
     <>
-      <header className="mx-2 flex items-center gap-x-4 text-accent-foreground sm:mx-0 sm:gap-x-4">
+      <header className="sticky top-0 z-10 flex items-center gap-x-4 bg-background px-2 pb-2 pt-1 text-accent-foreground sm:mx-0 sm:gap-x-4">
         <h2 className="flex gap-x-2 text-xl font-semibold tracking-tight">
           <span className="hidden py-1 sm:block">{championship.name} -</span>
           <span className="py-1">Tipps von </span>
@@ -101,15 +115,40 @@ export default function Spieler() {
               <Accordion
                 type="single"
                 collapsible
-                className="mt-6 space-y-1"
+                className="mt-6"
                 defaultValue={currentRoundId}
+                onValueChange={scrollToRound}
               >
                 {rounds.map((r) => {
                   const matchesInRound = matches.filter((m) => m.roundId === r.id);
+                  const matchIds = matchesInRound.map((m) => m.id);
+                  const playedMatchesInRound = matchesInRound.filter((m) => m.result).length;
+                  const pointsPerRound = Object.values(tips).reduce(
+                    (sum, t) => (matchIds.includes(t.matchId) ? sum + t.points : sum),
+                    0
+                  );
+
                   return (
-                    <AccordionItem key={r.id} value={r.id}>
-                      <AccordionTrigger className="bg-primary px-4 py-2 hover:bg-primary-hover">
-                        Runde {r.nr}
+                    <AccordionItem id={r.id} key={r.id} value={r.id} className="pt-1">
+                      <AccordionTrigger className="bg-primary px-4 py-2 hover:bg-primary-hover hover:no-underline">
+                        <div className="flex grow items-center justify-between font-semibold">
+                          <span className="block">{`Runde ${r.nr}`}</span>
+                          <div className="mr-4 flex items-center gap-x-4">
+                            {playedMatchesInRound > 0 && (
+                              <div className="flex gap-x-4 text-sm">
+                                <div className="flex gap-x-2">
+                                  <span className="hidden sm:block">Punkte:</span>
+                                  <span className="sm:hidden">Pkt:</span>
+                                  {pointsPerRound}
+                                </div>
+                                <div className="flex gap-x-2">
+                                  <span>&#x2300;</span>
+                                  {(pointsPerRound / playedMatchesInRound).toFixed(2)}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </div>
                       </AccordionTrigger>
                       <AccordionContent>
                         <table className="w-full text-sm">
@@ -146,12 +185,10 @@ export default function Spieler() {
                           </thead>
                           <tbody className="divide-y divide-line font-semibold text-subtle-foreground">
                             {matchesInRound.map((m) => {
-                              // const tip = tips.find((t) => t.matchId === m.id && t.playerId === player?.id);
-                              // const info = tip?.joker || tip?.lonelyHit || false;
-                              const tip = { tip: '', points: undefined };
-                              const info = false;
+                              const tip = tips[m.id];
+                              const info = tip?.joker || tip?.lonelyHit || false;
                               return (
-                                <tr className={cn(info && 'brand-bg')} key={m.id}>
+                                <tr className={cn(info && 'bg-primary-active')} key={m.id}>
                                   <td className="hidden px-2 text-center sm:table-cell sm:px-4 md:px-6">
                                     {m.nr}
                                   </td>
