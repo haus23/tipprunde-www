@@ -2,13 +2,16 @@ import { type V2_MetaFunction } from '@remix-run/node';
 import { useSearchParams } from '@remix-run/react';
 
 import { Select } from '~/components/elements/select';
-import { getChampionship } from '~/utils/route-match-helper';
+import { getChampionship, getChampionshipPlayers } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
-export const meta: V2_MetaFunction = ({ matches, params }) => {
+export const meta: V2_MetaFunction = ({ matches, params, location }) => {
   const championship = getChampionship(params.championship, matches);
-  return [{ title: `Tipps ${championship.name} - runde.tips` }];
+  const players = getChampionshipPlayers(matches);
+  const playerQuery = new URLSearchParams(location.search).get('name');
+  const player = players.find((p) => p.account.id === playerQuery) || players[0];
+  return [{ title: `Tipps ${player.account.name} ${championship.name} - runde.tips` }];
 };
 
 export default function Spieler() {
