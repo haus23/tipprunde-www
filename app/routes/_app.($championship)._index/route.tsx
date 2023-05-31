@@ -1,21 +1,16 @@
-import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
-import { fetchChampionshipPlayers } from '~/backend/queries';
+import { type V2_MetaFunction } from '@remix-run/node';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
+import { usePlayers } from '~/utils/use-players';
 
 export const meta: V2_MetaFunction = ({ matches, params }) => {
   const championship = getChampionship(params.championship, matches);
   return [{ title: `Tabelle ${championship.name} - runde.tips` }];
 };
 
-export const loader = async ({ params }: LoaderArgs) => {
-  return json(await fetchChampionshipPlayers(params.championship));
-};
-
 export default function Tabelle() {
   const championship = useChampionship();
-  const players = useLoaderData<typeof loader>();
+  const players = usePlayers();
 
   return (
     <>
