@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v0.3.0
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.2.0...v0.3.0)
+
+
+### 🚀 Enhancements
+
+  - Show extra points after publishing. ([0a1c272](https://github.com/haus23/tipprunde/commit/0a1c272))
+  - Load and display tips. ([9ced197](https://github.com/haus23/tipprunde/commit/9ced197))
+  - Link ranking to players. ([ba08961](https://github.com/haus23/tipprunde/commit/ba08961))
+
+### 🩹 Fixes
+
+  - Add workaround for https://github.com/radix-ui/primitives/issues/1658 ([5ef8f41](https://github.com/haus23/tipprunde/commit/5ef8f41))
+
+### 🏡 Chore
+
+  - Update tipprunde types. ([9ba2d79](https://github.com/haus23/tipprunde/commit/9ba2d79))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.2.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.1.1...v0.2.0)
