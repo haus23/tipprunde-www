@@ -1,7 +1,7 @@
 import { type V2_MetaFunction } from '@remix-run/node';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
-import { usePlayers } from '~/utils/use-players';
+import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
 export const meta: V2_MetaFunction = ({ matches, params }) => {
   const championship = getChampionship(params.championship, matches);
@@ -10,7 +10,7 @@ export const meta: V2_MetaFunction = ({ matches, params }) => {
 
 export default function Tabelle() {
   const championship = useChampionship();
-  const players = usePlayers();
+  const players = useChampionshipPlayers();
 
   return (
     <>
