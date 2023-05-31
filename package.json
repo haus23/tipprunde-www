@@ -14,7 +14,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "@haus23/tipprunde-types": "^0.9.0",
+    "@haus23/tipprunde-types": "^0.10.1",
     "@heroicons/react": "^2.0.18",
     "@radix-ui/react-dialog": "^1.0.4",
     "@radix-ui/react-select": "^1.2.2",
