@@ -29,7 +29,7 @@ export default function Tabelle() {
             <th scope="col" className="px-4 text-left font-medium md:px-6">
               Name
             </th>
-            {championship.completed && (
+            {(championship.extraPointsPublished || championship.completed) && (
               <th scope="col" className="px-4 text-center font-medium md:px-6 ">
                 <span className="hidden sm:inline">Zusatzpunkte</span>
                 <span className="sm:hidden">Zusatzpkt</span>
@@ -37,9 +37,13 @@ export default function Tabelle() {
             )}
             <th scope="col" className="px-4 text-center font-medium md:px-6">
               <span className="hidden sm:inline">
-                {championship.completed ? 'Gesamtpunkte' : 'Punkte'}
+                {championship.extraPointsPublished || championship.completed
+                  ? 'Gesamtpunkte'
+                  : 'Punkte'}
               </span>
-              <span className="sm:hidden">{championship.completed ? 'Gesamt' : 'Punkte'}</span>
+              <span className="sm:hidden">
+                {championship.extraPointsPublished || championship.completed ? 'Gesamt' : 'Punkte'}
+              </span>
             </th>
           </tr>
         </thead>
@@ -51,7 +55,7 @@ export default function Tabelle() {
               <tr key={p.id}>
                 <td className="px-4 text-right md:px-6">{currentRank}</td>
                 <td className="w-full px-4 py-2.5 md:px-6">{p.account.name}</td>
-                {championship.completed && (
+                {(championship.extraPointsPublished || championship.completed) && (
                   <td className="px-4 text-center md:px-6">{p.extraPoints}</td>
                 )}
                 <td className="px-4 text-center md:px-6">{p.totalPoints}</td>
