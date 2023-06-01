@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v0.3.2
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.3.1...v0.3.2)
+
+
+### 🩹 Fixes
+
+  - Provide correct link route. ([943d3fc](https://github.com/haus23/tipprunde/commit/943d3fc))
+
+### 💅 Refactors
+
+  - Await matches in loader. ([b6de5ce](https://github.com/haus23/tipprunde/commit/b6de5ce))
+  - Use match data from all matches query. ([759562c](https://github.com/haus23/tipprunde/commit/759562c))
+  - Align with updated type and backend. ([fa36377](https://github.com/haus23/tipprunde/commit/fa36377))
+
+### 🏡 Chore
+
+  - Upgrade tipprunde types. ([f25cfbf](https://github.com/haus23/tipprunde/commit/f25cfbf))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.3.1
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.3.0...v0.3.1)
