@@ -7,6 +7,7 @@ import { InfoBox } from '~/components/molecules/info-box';
 import { cn } from '~/utils';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
+import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
 export const meta: V2_MetaFunction = ({ matches, params }) => {
@@ -21,7 +22,14 @@ export const loader = async ({ params }: LoaderArgs) => {
 export default function Tabelle() {
   const championship = useChampionship();
   const players = useChampionshipPlayers();
-  const { matches, teams } = useLoaderData<typeof loader>();
+  const { matches: allMatches, teams } = useChampionshipMatches();
+
+  const { matches } = useLoaderData<typeof loader>();
+
+  const currentMatches = matches.map((cm) => ({
+    ...allMatches.find((m) => m.id === cm.id)!,
+    tips: cm.tips,
+  }));
 
   return (
     <>
@@ -88,7 +96,7 @@ export default function Tabelle() {
                           <div className="border-b border-line py-2 pl-2">Spiel</div>
                           <div className="border-b border-line p-2 text-center">Tipp</div>
                           <div className="border-b border-line p-2 text-center">Pkt</div>
-                          {matches.map((m) => {
+                          {currentMatches.map((m) => {
                             const tip = m.tips[p.id];
                             return (
                               <Fragment key={m.id}>
