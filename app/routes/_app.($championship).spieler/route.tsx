@@ -188,7 +188,7 @@ export default function Spieler() {
                           </td>
                           <td className="w-full px-2 sm:px-4 md:px-6">
                             <Link
-                              to={`../spiel/${m.nr}/${m.hometeamId}-${m.awayteamId}`}
+                              to={`../spiel?nr=${m.nr}`}
                               className="inline-block w-full py-2.5 hover:text-accent-foreground hover:underline"
                             >
                               <span className="hidden md:inline">
