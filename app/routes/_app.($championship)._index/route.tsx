@@ -2,7 +2,7 @@ import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { Fragment } from 'react';
-import { fetchCurrentMatches } from '~/backend/queries';
+import { fetchCurrentTips } from '~/backend/queries';
 import { InfoBox } from '~/components/molecules/info-box';
 import { cn } from '~/utils';
 import { getChampionship } from '~/utils/route-match-helper';
@@ -16,7 +16,7 @@ export const meta: V2_MetaFunction = ({ matches, params }) => {
 };
 
 export const loader = async ({ params }: LoaderArgs) => {
-  return json(await fetchCurrentMatches(params.championship));
+  return json(await fetchCurrentTips(params.championship));
 };
 
 export default function Tabelle() {
@@ -24,11 +24,11 @@ export default function Tabelle() {
   const players = useChampionshipPlayers();
   const { matches: allMatches, teams } = useChampionshipMatches();
 
-  const { matches } = useLoaderData<typeof loader>();
+  const currentTips = useLoaderData<typeof loader>();
 
-  const currentMatches = matches.map((cm) => ({
-    ...allMatches.find((m) => m.id === cm.id)!,
-    tips: cm.tips,
+  const currentMatches = currentTips.map((t) => ({
+    ...allMatches.find((m) => m.id === t.matchId)!,
+    tips: t.tips,
   }));
 
   return (
