@@ -1,4 +1,4 @@
-import { Championship, Matches, Player, Tip } from '@haus23/tipprunde-types';
+import { Championship, CurrentMatches, Matches, Player, Tip } from '@haus23/tipprunde-types';
 import { z } from 'zod';
 
 const baseUrl = `${process.env.BACKEND_HOST_URL}/api/v1`;
@@ -13,6 +13,13 @@ export async function fetchChampionshipPlayers(championshipId?: string) {
 
   const response = await fetch(`${baseUrl}/championships/${championshipId}/players`);
   return z.array(Player).parseAsync(await response.json());
+}
+
+export async function fetchCurrentMatches(championshipId?: string) {
+  championshipId = championshipId ?? 'current';
+
+  const response = await fetch(`${baseUrl}/championships/${championshipId}/current-matches`);
+  return CurrentMatches.parseAsync(await response.json());
 }
 
 export async function fetchMatches(championshipId?: string) {
