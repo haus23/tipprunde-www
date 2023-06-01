@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.3.1
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.3.0...v0.3.1)
+
+
+### 🚀 Enhancements
+
+  - Add reuseable info-box component. ([02b0b3e](https://github.com/haus23/tipprunde/commit/02b0b3e))
+  - Open infobox on hover as well. ([55b7cfa](https://github.com/haus23/tipprunde/commit/55b7cfa))
+  - Make icon customizable. ([163b521](https://github.com/haus23/tipprunde/commit/163b521))
+  - Show current matches and tips in ranking. ([b9349c3](https://github.com/haus23/tipprunde/commit/b9349c3))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.3.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.2.0...v0.3.0)
