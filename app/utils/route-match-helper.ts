@@ -20,5 +20,5 @@ export function getChampionshipPlayers(matches: RouteMatch[]) {
 
 export function getChampionshipMatches(matches: RouteMatch[]) {
   const standingsMatch = matches.find((m) => m.id === 'routes/_app.($championship)');
-  return standingsMatch?.data.matches as Promise<Matches>;
+  return standingsMatch?.data.matches as Matches;
 }
