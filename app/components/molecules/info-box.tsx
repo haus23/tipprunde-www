@@ -1,5 +1,12 @@
-import { forwardRef, type ComponentPropsWithoutRef, type ElementRef } from 'react';
+import {
+  forwardRef,
+  type ComponentPropsWithoutRef,
+  type ElementRef,
+  useState,
+  useRef,
+} from 'react';
 import * as PopoverPrimitive from '@radix-ui/react-popover';
+import { useHover } from '@react-aria/interactions';
 import { InformationCircleIcon } from '@heroicons/react/24/outline';
 import { cn } from '~/utils';
 
@@ -8,9 +15,29 @@ type InfoBoxRef = ElementRef<typeof PopoverPrimitive.Content>;
 
 const InfoBox = forwardRef<InfoBoxRef, InfoBoxProps>(
   ({ className, children, sideOffset = 2, ...props }, ref) => {
+    const [isOpen, setOpen] = useState(false);
+    const debounceRef = useRef(false);
+
+    const { hoverProps } = useHover({
+      onHoverChange(isHovering) {
+        if (isHovering) {
+          debounceRef.current = true;
+          setOpen(true);
+          setTimeout(() => {
+            debounceRef.current = false;
+          }, 50);
+        } else {
+          if (!debounceRef.current) setOpen(false);
+        }
+      },
+    });
+
     return (
-      <PopoverPrimitive.Root>
-        <PopoverPrimitive.Trigger className="rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+      <PopoverPrimitive.Root open={isOpen} onOpenChange={setOpen}>
+        <PopoverPrimitive.Trigger
+          {...hoverProps}
+          className="rounded focus:outline-none focus-visible:outline focus-visible:outline-ring"
+        >
           <InformationCircleIcon className="h-5" />
         </PopoverPrimitive.Trigger>
         <PopoverPrimitive.Content
@@ -21,6 +48,7 @@ const InfoBox = forwardRef<InfoBoxRef, InfoBoxProps>(
             className
           )}
           {...props}
+          {...hoverProps}
         >
           <PopoverPrimitive.Arrow className="h-2 w-4 fill-ring" />
           {children}
