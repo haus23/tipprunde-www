@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@haus23/tipprunde-types':
-    specifier: ^0.10.2
-    version: 0.10.2
+    specifier: ^0.11.0
+    version: 0.11.0
   '@heroicons/react':
     specifier: ^2.0.18
     version: 2.0.18(react@18.2.0)
@@ -1690,8 +1690,8 @@ packages:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
     dev: true
 
-  /@haus23/tipprunde-types@0.10.2:
-    resolution: {integrity: sha512-yhn7TCJPzgP5TLWXkgqlkf3/8eiprn05HxACiACAMGpB8/rqPLVm1aSd1RUEdpKqAU2rJ7LSPQdBfEiTyUn0Vw==}
+  /@haus23/tipprunde-types@0.11.0:
+    resolution: {integrity: sha512-seb/AtS2lW/oL3y1IkBq7jFRU003IoopUJCAnFXany4eE9new3pVbuvq9XHM2stiC5uVGgv8Wxg7DQtkvcx5aQ==}
     dependencies:
       zod: 3.21.4
     dev: false
