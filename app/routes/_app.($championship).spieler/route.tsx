@@ -9,6 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '~/components/molecules/accordion';
+import { InfoBox } from '~/components/molecules/info-box';
 import { cn, formatDate } from '~/utils';
 import { getChampionship, getChampionshipPlayers } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
@@ -211,16 +212,18 @@ export default function Spieler() {
                                   </td>
                                   <td className="px-2 text-center sm:px-4 md:px-6">{m.result}</td>
                                   <td className="px-2 text-center sm:px-4 md:px-6">
-                                    <div className="relative flex items-center">
+                                    <div className="flex items-center gap-x-2">
                                       <span>{tip?.tip}</span>
-                                      {/*info && (
-                                <Tooltip className="absolute right-0 translate-x-6">
-                                  <div className="px-4 py-2">
-                                    {tip?.joker === true && <p>Joker</p>}
-                                    {tip?.lonelyHit === true && <p>Einziger richtiger Tipp</p>}
-                                  </div>
-                                </Tooltip>
-                              )*/}
+                                      {info && (
+                                        <InfoBox align="end" side="top">
+                                          <div className="px-4 py-2">
+                                            {tip?.joker === true && <p>Joker</p>}
+                                            {tip?.lonelyHit === true && (
+                                              <p>Einziger richtiger Tipp</p>
+                                            )}
+                                          </div>
+                                        </InfoBox>
+                                      )}
                                     </div>
                                   </td>
                                   <td className="px-2 text-center sm:px-4 md:px-6">

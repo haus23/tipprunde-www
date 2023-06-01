@@ -47,6 +47,7 @@ export default {
         line: 'hsl(var(--border))',
         'primary-line': 'hsl(var(--primary-border))',
         ring: 'hsl(var(--ring))',
+        'primary-ring': 'hsl(var(--primary-ring))',
 
         /* -------------------------------------------- */
 
