@@ -62,7 +62,7 @@ export function Select<T extends TOptions>({
             position="popper"
             align="end"
             sideOffset={8}
-            className="isolate z-10 max-h-[var(--radix-select-content-available-height)] min-w-[var(--radix-select-trigger-width)] overflow-hidden rounded-md bg-subtle p-2 shadow-lg ring-1 ring-ring focus:outline-none"
+            className="isolate z-10 max-h-[var(--radix-select-content-available-height)] min-w-[var(--radix-popper-available-width)] overflow-hidden rounded-md bg-subtle p-2 shadow-lg ring-1 ring-ring focus:outline-none  sm:min-w-[var(--radix-select-trigger-width)]"
           >
             <SelectPrimitive.ScrollUpButton className="flex justify-center">
               <ChevronUpIcon className="h-5" />
