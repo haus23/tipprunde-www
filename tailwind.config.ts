@@ -44,8 +44,15 @@ export default {
           active: 'hsl(var(--neutral-active))',
         },
 
-        line: 'hsl(var(--border))',
-        'primary-line': 'hsl(var(--primary-border))',
+        line: {
+          DEFAULT: 'hsl(var(--border))',
+          hover: 'hsl(var(--border-hover))',
+        },
+        'primary-line': {
+          DEFAULT: 'hsl(var(--primary-border))',
+          hover: 'hsl(var(--primary-border-hover))',
+        },
+
         ring: 'hsl(var(--ring))',
         'primary-ring': 'hsl(var(--primary-ring))',
 
