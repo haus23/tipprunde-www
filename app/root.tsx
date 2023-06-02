@@ -17,7 +17,11 @@ export default function App() {
       </head>
       <body className="bg-background text-foreground">
         <Outlet />
-        <ScrollRestoration />
+        <ScrollRestoration
+          getKey={(location) => {
+            return location.pathname;
+          }}
+        />
         <Scripts />
         <LiveReload />
       </body>
