@@ -34,7 +34,6 @@ export async function fetchPlayerTips(playerId: string | null, championshipId: s
   const query = playerId ? `?name=${playerId}` : '';
 
   const url = `${baseUrl}/championships/${championshipId}/player-tips${query}`;
-  console.log(url);
   const response = await fetch(url);
   return z.record(Tip).parseAsync(await response.json());
 }
