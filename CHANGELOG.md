@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.3.3
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.3.2...v0.3.3)
+
+
+### 🚀 Enhancements
+
+  - Implement nav. ([92ea200](https://github.com/haus23/tipprunde/commit/92ea200))
+
+### 🩹 Fixes
+
+  - Increase z-index ([7edf812](https://github.com/haus23/tipprunde/commit/7edf812))
+  - Restore scroll pos on same locations. ([f0af8bb](https://github.com/haus23/tipprunde/commit/f0af8bb))
+
+### 💅 Refactors
+
+  - Add export for close primitive. ([5c5c2c1](https://github.com/haus23/tipprunde/commit/5c5c2c1))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.3.2
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.3.1...v0.3.2)
