@@ -23,7 +23,7 @@ export default function Spieler() {
 
   return (
     <>
-      <header className="sticky top-0 z-10 flex items-center gap-x-4 bg-background px-2 pb-2 pt-1 text-accent-foreground sm:mx-0 sm:gap-x-4">
+      <header className="sticky top-0 z-10 mx-2 flex items-center gap-x-4 bg-background pt-1 text-accent-foreground sm:mx-0 sm:gap-x-4">
         <h2 className="flex gap-x-2 text-xl font-semibold tracking-tight">
           <span className="hidden py-1 sm:block">{championship.name} -</span>
           <span className="py-1">Tipps für</span>

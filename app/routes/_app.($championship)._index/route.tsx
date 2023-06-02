@@ -33,8 +33,8 @@ export default function Tabelle() {
 
   return (
     <>
-      <header className="mx-2 flex items-center gap-x-2 text-accent-foreground sm:mx-0 sm:gap-x-4">
-        <h2 className="flex gap-x-2 pb-1 text-xl font-semibold tracking-tight">
+      <header className="mx-2 flex items-center gap-x-2 pt-2 text-accent-foreground sm:mx-0 sm:gap-x-4">
+        <h2 className="flex gap-x-2 text-xl font-semibold tracking-tight">
           <span className="hidden sm:block">{championship.name} -</span>
           <span>{championship.completed ? 'Abschlusstabelle' : 'Aktuelle Tabelle'}</span>
         </h2>
