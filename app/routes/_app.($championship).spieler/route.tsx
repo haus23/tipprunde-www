@@ -16,17 +16,17 @@ import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
-export const meta: V2_MetaFunction = ({ matches, params, location }) => {
-  const championship = getChampionship(params.championship, matches);
-  const players = getChampionshipPlayers(matches);
-  const playerQuery = new URLSearchParams(location.search).get('name');
-  const player = players.find((p) => p.account.id === playerQuery) || players[0];
-  return [{ title: `Tipps ${player.account.name} ${championship.name} - runde.tips` }];
-};
-
 export const loader = async ({ params, request }: LoaderArgs) => {
   const accountId = new URL(request.url).searchParams.get('name');
   return json(await fetchPlayerTips(accountId, params.championship));
+};
+
+export const meta: V2_MetaFunction = ({ matches, params, data }) => {
+  const championship = getChampionship(params.championship, matches);
+
+  const players = getChampionshipPlayers(matches);
+  const player = players.find((p) => p.id === data.playerId) || players[0];
+  return [{ title: `Tipps ${player.account.name} ${championship.name} - runde.tips` }];
 };
 
 export default function Spieler() {
