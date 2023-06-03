@@ -29,9 +29,12 @@ export async function fetchMatches(championshipId?: string) {
   return Matches.parseAsync(await response.json());
 }
 
-export async function fetchPlayerTips(playerId: string | null, championshipId: string | undefined) {
+export async function fetchPlayerTips(
+  accountId: string | null,
+  championshipId: string | undefined
+) {
   championshipId = championshipId ?? 'current';
-  const query = playerId ? `?name=${playerId}` : '';
+  const query = accountId ? `?name=${accountId}` : '';
 
   const url = `${baseUrl}/championships/${championshipId}/player-tips${query}`;
   const response = await fetch(url);
