@@ -30,10 +30,12 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 };
 
 export default function Spieler() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const { playerId, tips } = useLoaderData<typeof loader>();
+
   const championship = useChampionship();
   const players = useChampionshipPlayers();
   const { matches, rounds, teams } = useChampionshipMatches();
-  const tips = useLoaderData<typeof loader>();
 
   // find current round
   let currentRoundId: string | undefined = undefined;
@@ -53,10 +55,7 @@ export default function Spieler() {
   }
   const playedMatches = matches.filter((m) => m.result).length;
 
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const accId = searchParams.get('name');
-  const player = players.find((p) => p.account.id === accId) || players[0];
+  const player = players.find((p) => p.id === playerId) || players[0];
 
   function handleSelect(value: string) {
     const accId = players.find((p) => p.id === value)?.account.id;
