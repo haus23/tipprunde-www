@@ -17,8 +17,8 @@ import { Logo } from '../brand/logo';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
-  { label: 'Spieler', viewSegment: 'spieler', end: false },
-  { label: 'Spiele', viewSegment: 'spiel', end: false },
+  { label: 'Spieler', viewSegment: 'tipps/spieler', end: false },
+  { label: 'Spiele', viewSegment: 'tipps/spiel', end: false },
 ];
 
 export function NavMobile() {
