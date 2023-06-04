@@ -14,7 +14,6 @@ import { MatchTipsTable } from './match-tips-table';
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   const nr = new URL(request.url).searchParams.get('nr');
-  console.log(nr);
   return json(await fetchMatchTips(nr, params.championship));
 };
 
