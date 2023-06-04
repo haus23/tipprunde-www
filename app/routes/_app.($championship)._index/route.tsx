@@ -3,7 +3,7 @@ import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { Fragment } from 'react';
 import { fetchCurrentTips } from '~/backend/queries';
-import { InfoBox } from '~/components/molecules/info-box';
+import { InfoBox } from '~/components/ui/molecules/info-box';
 import { cn } from '~/utils';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';

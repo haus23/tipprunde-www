@@ -3,14 +3,14 @@ import { Link, NavLink, useLocation, useParams } from '@remix-run/react';
 import * as Nav from '@radix-ui/react-navigation-menu';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-import { Button } from '~/components/atoms/button';
+import { Button } from '~/components/ui/atoms/button';
 import {
   Dialog,
   DialogClose,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from '~/components/molecules/dialog';
+} from '~/components/ui/molecules/dialog';
 import { useChampionship } from '~/utils/use-championship';
 import { ChampionshipSelect } from './championship-select';
 import { Logo } from './logo';
