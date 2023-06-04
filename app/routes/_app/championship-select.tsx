@@ -5,13 +5,13 @@ import { useNavigate } from '@remix-run/react';
 import { Command } from 'cmdk';
 import commandScore from 'command-score';
 
-import { Button } from '~/components/ui/atoms/button';
+import { Button } from '~/components/(ui)/atoms/button';
 import {
   Dialog,
   DialogContent,
   DialogTitle,
   DialogTrigger,
-} from '~/components/ui/molecules/dialog';
+} from '~/components/(ui)/molecules/dialog';
 import { cn } from '~/utils';
 import { useChampionship } from '~/utils/use-championship';
 import { useChampionships } from '~/utils/use-championships';

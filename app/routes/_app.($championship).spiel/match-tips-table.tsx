@@ -1,6 +1,6 @@
 import type { Match, Tip } from '@haus23/tipprunde-types';
 import { Link } from '@remix-run/react';
-import { InfoBox } from '~/components/ui/molecules/info-box';
+import { InfoBox } from '~/components/(ui)/molecules/info-box';
 import { cn } from '~/utils';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
