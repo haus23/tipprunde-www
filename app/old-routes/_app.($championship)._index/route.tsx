@@ -3,11 +3,10 @@ import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { Fragment } from 'react';
 import { fetchCurrentTips } from '~/backend/queries';
-import { InfoBox } from '~/components/molecules/info-box';
+import { InfoBox } from '~/components/(ui)/molecules/info-box';
 import { cn } from '~/utils';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
-import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
 export const meta: V2_MetaFunction = ({ matches, params }) => {
@@ -22,14 +21,8 @@ export const loader = async ({ params }: LoaderArgs) => {
 export default function Tabelle() {
   const championship = useChampionship();
   const players = useChampionshipPlayers();
-  const { matches: allMatches, teams } = useChampionshipMatches();
 
   const currentTips = useLoaderData<typeof loader>();
-
-  const currentMatches = currentTips.map((t) => ({
-    ...allMatches.find((m) => m.id === t.matchId)!,
-    tips: t.tips,
-  }));
 
   return (
     <>
@@ -96,17 +89,17 @@ export default function Tabelle() {
                           <div className="border-b border-line py-2 pl-2">Spiel</div>
                           <div className="border-b border-line p-2 text-center">Tipp</div>
                           <div className="border-b border-line p-2 text-center">Pkt</div>
-                          {currentMatches.map((m) => {
+                          {currentTips.map((m) => {
                             const tip = m.tips[p.id];
                             return (
-                              <Fragment key={m.id}>
+                              <Fragment key={m.matchId}>
                                 <div
                                   className={cn(
                                     'py-1 pl-2',
                                     (tip?.joker || tip?.lonelyHit) && 'bg-primary'
                                   )}
                                 >
-                                  {teams[m.hometeamId].shortname}-{teams[m.awayteamId].shortname}
+                                  {m.hometeam}-{m.awayteam}
                                 </div>
                                 <div
                                   className={cn(

@@ -3,8 +3,8 @@ import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
 import { useLoaderData, useSearchParams } from '@remix-run/react';
 import { fetchMatchTips } from '~/backend/queries';
 
-import { Select } from '~/components/elements/select';
-import { InfoBox } from '~/components/molecules/info-box';
+import { Select } from '~/components/(ui)/elements/select';
+import { InfoBox } from '~/components/(ui)/molecules/info-box';
 
 import { formatDate } from '~/utils';
 import { getChampionship, getChampionshipMatches } from '~/utils/route-match-helper';
@@ -14,7 +14,6 @@ import { MatchTipsTable } from './match-tips-table';
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   const nr = new URL(request.url).searchParams.get('nr');
-  console.log(nr);
   return json(await fetchMatchTips(nr, params.championship));
 };
 

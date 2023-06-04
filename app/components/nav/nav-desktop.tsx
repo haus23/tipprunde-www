@@ -1,13 +1,13 @@
 import { Link, NavLink, useParams } from '@remix-run/react';
 import * as Nav from '@radix-ui/react-navigation-menu';
 
-import { Logo } from './logo';
-import { ChampionshipSelect } from './championship-select';
+import { Logo } from '../brand/logo';
+import { ChampionshipSelect } from '../commands/championship-select';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
-  { label: 'Spieler', viewSegment: 'spieler', end: false },
-  { label: 'Spiele', viewSegment: 'spiel', end: false },
+  { label: 'Spieler', viewSegment: 'tipps/spieler', end: false },
+  { label: 'Spiele', viewSegment: 'tipps/spiel', end: false },
 ];
 
 export function NavDesktop() {

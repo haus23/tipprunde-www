@@ -1,6 +1,38 @@
 # Changelog
 
 
+## v0.5.0
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.4.0...v0.5.0)
+
+
+### 🚀 Enhancements
+
+  - Refactor routing with remix-flat-routes package. Add auth routes as proof of concept by now. ([6e3fa07](https://github.com/haus23/tipprunde/commit/6e3fa07))
+
+### 💅 Refactors
+
+  - Move reusable components to dedicated ui folder. ([69b0faf](https://github.com/haus23/tipprunde/commit/69b0faf))
+  - Rename ui components folder. ([162ba8d](https://github.com/haus23/tipprunde/commit/162ba8d))
+  - Move app layout to root. Clean-up root. ([e59151b](https://github.com/haus23/tipprunde/commit/e59151b))
+  - Move app data loading to root. ([cedf47d](https://github.com/haus23/tipprunde/commit/cedf47d))
+  - Remove unused pathless layout. ([fce7be6](https://github.com/haus23/tipprunde/commit/fce7be6))
+  - Simplify ranking with now updated backend. No need to query matches and teams. ([34ac9a5](https://github.com/haus23/tipprunde/commit/34ac9a5))
+  - Ignore all existing routes first. ([f13cf31](https://github.com/haus23/tipprunde/commit/f13cf31))
+  - Move the old routes out of the way. Start with the flat-routes package. ([dc61d8e](https://github.com/haus23/tipprunde/commit/dc61d8e))
+  - Add ranking route. ([1f122b5](https://github.com/haus23/tipprunde/commit/1f122b5))
+  - Add players route back. URL changing to clearify loading with extra layout. ([b4e28d7](https://github.com/haus23/tipprunde/commit/b4e28d7))
+  - Add matches route back ([853131e](https://github.com/haus23/tipprunde/commit/853131e))
+
+### 🏡 Chore
+
+  - Upgrade tipprunde types. ([4216efa](https://github.com/haus23/tipprunde/commit/4216efa))
+  - Add dependency remix-flat-routes. Start migration. ([9c2cef1](https://github.com/haus23/tipprunde/commit/9c2cef1))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.4.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.3.3...v0.4.0)

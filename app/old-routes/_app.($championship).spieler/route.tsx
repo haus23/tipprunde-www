@@ -2,14 +2,14 @@ import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
 import { fetchPlayerTips } from '~/backend/queries';
 
-import { Select } from '~/components/elements/select';
+import { Select } from '~/components/(ui)/elements/select';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from '~/components/molecules/accordion';
-import { InfoBox } from '~/components/molecules/info-box';
+} from '~/components/(ui)/molecules/accordion';
+import { InfoBox } from '~/components/(ui)/molecules/info-box';
 import { cn, formatDate } from '~/utils';
 import { getChampionship, getChampionshipPlayers } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';

@@ -1,6 +1,8 @@
-import { getChampionships } from './route-match-helper';
-import { useMatches } from '@remix-run/react';
+import type { SerializeFrom } from '@remix-run/node';
+import { useRouteLoaderData } from '@remix-run/react';
+import type { loader as rootLoader } from '~/root';
 
 export function useChampionships() {
-  return getChampionships(useMatches());
+  const data = useRouteLoaderData('root') as SerializeFrom<typeof rootLoader>;
+  return data.championships;
 }
