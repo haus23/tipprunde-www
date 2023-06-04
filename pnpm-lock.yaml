@@ -94,6 +94,9 @@ devDependencies:
   prettier-plugin-tailwindcss:
     specifier: ^0.3.0
     version: 0.3.0(prettier@2.8.8)
+  remix-flat-routes:
+    specifier: ^0.5.8
+    version: 0.5.8
   tailwind-merge:
     specifier: ^1.12.0
     version: 1.12.0
@@ -6988,6 +6991,13 @@ packages:
     dependencies:
       brace-expansion: 1.1.11
 
+  /minimatch@5.1.6:
+    resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
+    engines: {node: '>=10'}
+    dependencies:
+      brace-expansion: 2.0.1
+    dev: true
+
   /minimatch@9.0.1:
     resolution: {integrity: sha512-0jWhJpD/MdhPXwPuiRkCbfYfSKp2qnn2eOc279qI7f+osl/l+prKSrvhg157zSYvx/1nmgn2NqdT6k2Z7zSH9w==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -8168,6 +8178,13 @@ packages:
       '@types/mdast': 3.0.11
       mdast-util-to-hast: 11.3.0
       unified: 10.1.2
+    dev: true
+
+  /remix-flat-routes@0.5.8:
+    resolution: {integrity: sha512-wMKS48CR5NN+wcMu34JUljcVfkKzuLIZ6eP0ksxE0zgJIeqz4mdPi/TZxvHAVossxAg174iLRh1E9d4wPmxAQg==}
+    hasBin: true
+    dependencies:
+      minimatch: 5.1.6
     dev: true
 
   /require-from-string@2.0.2:
