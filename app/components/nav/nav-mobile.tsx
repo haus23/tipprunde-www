@@ -12,8 +12,8 @@ import {
   DialogTrigger,
 } from '~/components/(ui)/molecules/dialog';
 import { useChampionship } from '~/utils/use-championship';
-import { ChampionshipSelect } from './championship-select';
-import { Logo } from './logo';
+import { ChampionshipSelect } from '../commands/championship-select';
+import { Logo } from '../brand/logo';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
