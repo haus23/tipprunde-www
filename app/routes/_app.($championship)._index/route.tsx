@@ -39,10 +39,10 @@ export default function Tabelle() {
           <span>{championship.completed ? 'Abschlusstabelle' : 'Aktuelle Tabelle'}</span>
         </h2>
       </header>
-      <table className="mt-4 w-full text-sm sm:text-base">
-        <thead className="bg-accent-subtle text-xs uppercase text-accent-foreground sm:text-sm">
+      <table className="mt-4 w-full text-sm">
+        <thead className="bg-accent-subtle text-xs uppercase text-accent-foreground">
           <tr>
-            <th scope="col" className="py-2 pl-4 pr-2 text-right font-medium md:px-6">
+            <th scope="col" className="py-3 pl-4 pr-2 text-right font-medium md:px-6">
               Platz
             </th>
             <th scope="col" className="px-2 text-left font-medium md:px-6">
@@ -69,7 +69,7 @@ export default function Tabelle() {
             )}
           </tr>
         </thead>
-        <tbody className="divide-y divide-line font-semibold text-subtle-foreground">
+        <tbody className="divide-y divide-neutral-hover font-semibold text-subtle-foreground">
           {players.map((p, ix) => {
             const currentRank =
               ix === 0 ? '1.' : p.rank !== players[ix - 1].rank ? `${p.rank}.` : '';

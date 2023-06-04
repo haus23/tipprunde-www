@@ -10,9 +10,11 @@ import { formatDate } from '~/utils';
 import { getChampionship, getChampionshipMatches } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
+import { MatchTipsTable } from './match-tips-table';
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   const nr = new URL(request.url).searchParams.get('nr');
+  console.log(nr);
   return json(await fetchMatchTips(nr, params.championship));
 };
 
@@ -32,7 +34,7 @@ export const meta: V2_MetaFunction = ({ matches: routeMatches, params, data }) =
 
 export default function Spiel() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const { matchId } = useLoaderData<typeof loader>();
+  const { matchId, tips } = useLoaderData<typeof loader>();
 
   const championship = useChampionship();
   const { matches, teams, leagues, rounds } = useChampionshipMatches();
@@ -88,6 +90,9 @@ export default function Spiel() {
             <span className="hidden sm:block">Alle erzielten Punkte werden verdoppelt.</span>
           </div>
         ) : null}
+      </div>
+      <div className="mt-6">
+        <MatchTipsTable tips={tips} match={match} />
       </div>
     </>
   );

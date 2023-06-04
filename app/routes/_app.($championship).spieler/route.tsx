@@ -145,7 +145,7 @@ export default function Spieler() {
               </AccordionTrigger>
               <AccordionContent>
                 <table className="w-full text-sm">
-                  <thead className="bg-accent-subtle  text-xs text-accent-foreground">
+                  <thead className="bg-accent-subtle text-xs text-accent-foreground">
                     <tr>
                       <th
                         scope="col"
@@ -173,7 +173,7 @@ export default function Spieler() {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-line font-semibold text-subtle-foreground">
+                  <tbody className="divide-y divide-neutral-hover font-semibold text-subtle-foreground">
                     {matchesInRound.map((m) => {
                       const tip = tips[m.id];
                       const info = tip?.joker || tip?.lonelyHit || false;
@@ -199,18 +199,18 @@ export default function Spieler() {
                             </Link>
                           </td>
                           <td className="px-2 text-center sm:px-4 md:px-6">{m.result}</td>
-                          <td className="px-2 text-center sm:px-4 md:px-6">
-                            <div className="flex items-center gap-x-2">
-                              <span>{tip?.tip}</span>
-                              {info && (
+                          <td className="relative px-2 text-center sm:px-4 md:px-6">
+                            <span>{tip?.tip}</span>
+                            {info && (
+                              <span className="absolute right-0">
                                 <InfoBox align="end" side="top">
                                   <div className="px-4 py-2">
                                     {tip?.joker === true && <p>Joker</p>}
                                     {tip?.lonelyHit === true && <p>Einziger richtiger Tipp</p>}
                                   </div>
                                 </InfoBox>
-                              )}
-                            </div>
+                              </span>
+                            )}
                           </td>
                           <td className="px-2 text-center sm:px-4 md:px-6">
                             {m.result && tip?.points}
