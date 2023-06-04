@@ -2,8 +2,8 @@ import type { Championship, Matches, Player } from '@haus23/tipprunde-types';
 import type { RouteMatch } from '@remix-run/react';
 
 export function getChampionships(matches: RouteMatch[]) {
-  const appMatch = matches.find((m) => m.id === 'routes/_app');
-  return appMatch?.data as Championship[];
+  const appMatch = matches.find((m) => m.id === 'root');
+  return appMatch?.data.championships as Championship[];
 }
 
 export function getChampionship(championshipId: string | undefined, matches: RouteMatch[]) {

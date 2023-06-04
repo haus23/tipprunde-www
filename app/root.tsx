@@ -1,13 +1,23 @@
-import type { LinksFunction, V2_MetaFunction } from '@remix-run/node';
+import { json, type LinksFunction, type V2_MetaFunction } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
 import { AppHeader } from '~/components/nav/app-header';
 
 import tailwindStylesheetUrl from './styles/tailwind.css';
+import { fetchChampionships } from './backend/queries';
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: tailwindStylesheetUrl }];
 
 export const meta: V2_MetaFunction = () => {
   return [{ title: 'runde.tips' }];
+};
+
+export const loader = async () => {
+  const championships = await fetchChampionships();
+  return json({ championships });
+};
+
+export const shouldRevalidate = () => {
+  return false;
 };
 
 export default function App() {
