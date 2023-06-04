@@ -50,7 +50,7 @@ export async function fetchPlayerTips(
 
 export async function fetchMatchTips(nr: string | null, championshipId: string | undefined) {
   championshipId = championshipId ?? 'current';
-  const query = nr ? `?name=${nr}` : '';
+  const query = nr ? `?nr=${nr}` : '';
 
   const url = `${baseUrl}/championships/${championshipId}/match-tips${query}`;
   const response = await fetch(url);
