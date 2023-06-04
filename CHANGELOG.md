@@ -1,6 +1,37 @@
 # Changelog
 
 
+## v0.4.0
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.3.3...v0.4.0)
+
+
+### 🚀 Enhancements
+
+  - Add match route. ([0268056](https://github.com/haus23/tipprunde/commit/0268056))
+  - Load current match and tips with loader. ([521b411](https://github.com/haus23/tipprunde/commit/521b411))
+  - First take on the match tips table. And align all table layouts. ([b6a13a8](https://github.com/haus23/tipprunde/commit/b6a13a8))
+
+### 🩹 Fixes
+
+  - Align headers. ([58c7247](https://github.com/haus23/tipprunde/commit/58c7247))
+  - Popper with full width on xs devices. ([dcd3ce0](https://github.com/haus23/tipprunde/commit/dcd3ce0))
+  - Wrong param name ([bef6628](https://github.com/haus23/tipprunde/commit/bef6628))
+
+### 💅 Refactors
+
+  - Align with upgraded query type. ([82005b7](https://github.com/haus23/tipprunde/commit/82005b7))
+  - Better naming ([74c4541](https://github.com/haus23/tipprunde/commit/74c4541))
+  - Simplify logic - loader comes first and has the data. ([234657b](https://github.com/haus23/tipprunde/commit/234657b))
+
+### 🏡 Chore
+
+  - Upgrade tipprunde types. ([9952827](https://github.com/haus23/tipprunde/commit/9952827))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.3.3
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.3.2...v0.3.3)
