@@ -14,7 +14,7 @@ export function getChampionship(championshipId: string | undefined, matches: Rou
 }
 
 export function getChampionshipPlayers(matches: RouteMatch[]) {
-  const standingsMatch = matches.find((m) => m.id === 'routes/_app.($championship)');
+  const standingsMatch = matches.find((m) => m.id === 'routes/($championship)+/_layout');
   return standingsMatch?.data.players as Player[];
 }
 
