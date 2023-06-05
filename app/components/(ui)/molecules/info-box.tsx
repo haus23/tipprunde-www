@@ -13,12 +13,13 @@ import { cn } from '~/utils';
 
 type InfoBoxProps = ComponentPropsWithoutRef<typeof PopoverPrimitive.Content> & {
   icon?: ElementType;
+  ariaTriggerLabel?: string;
 };
 
 type InfoBoxRef = ElementRef<typeof PopoverPrimitive.Content>;
 
 const InfoBox = forwardRef<InfoBoxRef, InfoBoxProps>(
-  ({ className, children, icon, sideOffset = 2, ...props }, ref) => {
+  ({ className, children, icon, sideOffset = 2, ariaTriggerLabel, ...props }, ref) => {
     const [isOpen, setOpen] = useState(false);
     const debounceRef = useRef(false);
 
@@ -41,6 +42,7 @@ const InfoBox = forwardRef<InfoBoxRef, InfoBoxProps>(
     return (
       <PopoverPrimitive.Root open={isOpen} onOpenChange={setOpen}>
         <PopoverPrimitive.Trigger
+          aria-label={ariaTriggerLabel}
           {...hoverProps}
           className="rounded focus:outline-none focus-visible:outline focus-visible:outline-ring"
         >

@@ -203,7 +203,11 @@ export default function Spieler() {
                             <span>{tip?.tip}</span>
                             {info && (
                               <span className="absolute right-0">
-                                <InfoBox align="end" side="top">
+                                <InfoBox
+                                  align="end"
+                                  side="top"
+                                  ariaTriggerLabel="Zusatzinfos zum Tipp"
+                                >
                                   <div className="px-4 py-2">
                                     {tip?.joker === true && <p>Joker</p>}
                                     {tip?.lonelyHit === true && <p>Einziger richtiger Tipp</p>}

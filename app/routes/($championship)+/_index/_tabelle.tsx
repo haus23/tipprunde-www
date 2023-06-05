@@ -84,7 +84,12 @@ export default function Tabelle() {
                 {!championship.completed && (
                   <td>
                     <div className="flex items-center pr-2">
-                      <InfoBox side="top" collisionPadding={8} icon={CalendarDaysIcon}>
+                      <InfoBox
+                        side="top"
+                        collisionPadding={8}
+                        icon={CalendarDaysIcon}
+                        ariaTriggerLabel={`Aktuelle Tips von ${p.account.name}`}
+                      >
                         <div className="grid w-[240px] grid-cols-[1fr_repeat(2,_auto)] pb-2 text-sm font-normal">
                           <div className="border-b border-line py-2 pl-2">Spiel</div>
                           <div className="border-b border-line p-2 text-center">Tipp</div>

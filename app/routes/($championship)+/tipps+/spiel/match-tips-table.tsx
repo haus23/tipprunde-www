@@ -43,7 +43,7 @@ export function MatchTipsTable({ tips, match }: { tips: Record<string, Tip>; mat
                 <span>{tip?.tip}</span>
                 {highlighted && (
                   <span className="absolute right-0">
-                    <InfoBox align="end" side="top">
+                    <InfoBox align="end" side="top" ariaTriggerLabel="Zusatzinfos zum Tipp">
                       <div className="px-4 py-2">
                         {tip?.joker === true && <p>Joker</p>}
                         {tip?.lonelyHit === true && <p>Einziger richtiger Tipp</p>}
