@@ -57,6 +57,9 @@ export default function Spiel() {
           onValueChanged={handleSelect}
           options={matches}
           display={(m) => `${teams[m.hometeamId].shortname} - ${teams[m.awayteamId].shortname}`}
+          groups={rounds}
+          groupKey="roundId"
+          groupDisplay={(r) => `Runde ${r.nr}`}
         />
       </header>
       <div className="mx-2 mt-6 max-w-3xl text-sm md:mx-auto">

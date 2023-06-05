@@ -1,14 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, type ReactElement, Fragment } from 'react';
 import { CheckIcon, ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/24/outline';
 import * as SelectPrimitive from '@radix-ui/react-select';
 
 type TOptions = { id: string } & Record<string, any>;
+type ExtractStringValueKeys<T> = { [I in keyof T]: T[I] extends string ? I : never }[Extract<
+  keyof T,
+  string
+>];
 
-type SelectProps<T extends TOptions> = {
+type SelectProps<T extends TOptions, G extends TOptions> = {
   value: string;
   onValueChanged: (value: string) => void;
   options: T[];
   display: (item: T) => string;
+  groups?: G[];
+  groupKey?: ExtractStringValueKeys<T>;
+  groupDisplay?: (group: G) => string;
 };
 
 function SelectOverlay({ open }: { open: boolean }) {
@@ -32,12 +39,15 @@ function SelectOverlay({ open }: { open: boolean }) {
   ) : null;
 }
 
-export function Select<T extends TOptions>({
+export function Select<T extends TOptions, G extends TOptions>({
   options,
   display,
   value,
   onValueChanged,
-}: SelectProps<T>) {
+  groups,
+  groupKey,
+  groupDisplay,
+}: SelectProps<T, G>) {
   // Removable when issue is solved
   const [open, setOpen] = useState(false);
 
@@ -68,18 +78,36 @@ export function Select<T extends TOptions>({
               <ChevronUpIcon className="h-5" />
             </SelectPrimitive.ScrollUpButton>
             <SelectPrimitive.Viewport>
-              {options.map((item) => (
-                <SelectPrimitive.Item
-                  key={item.id}
-                  value={item.id}
-                  className="relative my-1 flex cursor-pointer select-none items-center justify-between space-x-2 rounded px-4 py-1 focus:bg-neutral-hover focus:outline-none data-[state=checked]:text-accent-subtle-foreground"
-                >
-                  <SelectPrimitive.ItemText>{display(item)}</SelectPrimitive.ItemText>
-                  <SelectPrimitive.ItemIndicator className="absolute right-4">
-                    <CheckIcon className="h-6" />
-                  </SelectPrimitive.ItemIndicator>
-                </SelectPrimitive.Item>
-              ))}
+              {(groups || [undefined]).map((g) => {
+                let GroupContainer: ReactElement;
+                const children = options
+                  .filter((item) => (groupKey ? item[groupKey] === g?.id : true))
+                  .map((item) => (
+                    <SelectPrimitive.Item
+                      key={item.id}
+                      value={item.id}
+                      className="relative my-1 flex cursor-pointer select-none items-center justify-between space-x-2 rounded px-4 py-1 focus:bg-neutral-hover focus:outline-none data-[state=checked]:text-accent-subtle-foreground"
+                    >
+                      <SelectPrimitive.ItemText>{display(item)}</SelectPrimitive.ItemText>
+                      <SelectPrimitive.ItemIndicator className="absolute right-4">
+                        <CheckIcon className="h-6" />
+                      </SelectPrimitive.ItemIndicator>
+                    </SelectPrimitive.Item>
+                  ));
+                if (g) {
+                  GroupContainer = (
+                    <SelectPrimitive.Group key={g.id}>
+                      <SelectPrimitive.Label className="text-sm text-subtle-foreground">
+                        {groupDisplay && groupDisplay(g)}
+                      </SelectPrimitive.Label>
+                      {...children}
+                    </SelectPrimitive.Group>
+                  );
+                } else {
+                  GroupContainer = <Fragment key={'no-group'}>{...children}</Fragment>;
+                }
+                return GroupContainer;
+              })}
             </SelectPrimitive.Viewport>
             <SelectPrimitive.ScrollDownButton className="flex justify-center">
               <ChevronDownIcon className="h-5" />
