@@ -72,7 +72,7 @@ export default function Tabelle() {
                 <td className="w-full px-2 py-2.5 md:px-6">
                   <Link
                     className="block hover:text-accent-foreground hover:underline"
-                    to={`spieler?name=${p.playerId}`}
+                    to={`tipps/spieler?name=${p.playerId}`}
                   >
                     {p.account.name}
                   </Link>
