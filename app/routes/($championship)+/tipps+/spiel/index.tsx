@@ -1,5 +1,5 @@
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
-import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
+import { json, redirect, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
 import { useLoaderData, useSearchParams } from '@remix-run/react';
 import { fetchMatchTips } from '~/backend/queries';
 
@@ -30,7 +30,12 @@ export const handle = { viewPath: 'tipps/spiel' };
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   const nr = new URL(request.url).searchParams.get('nr');
-  return json(await fetchMatchTips(nr, params.championship));
+  try {
+    const matchTips = await fetchMatchTips(nr, params.championship);
+    return json(matchTips);
+  } catch {
+    return redirect(new URL(request.url).pathname);
+  }
 };
 
 export default function Spiel() {

@@ -54,5 +54,9 @@ export async function fetchMatchTips(nr: string | null, championshipId: string |
 
   const url = `${baseUrl}/championships/${championshipId}/match-tips${query}`;
   const response = await fetch(url);
+  if (response.status === 404) {
+    throw response;
+  }
+
   return MatchTips.parseAsync(await response.json());
 }

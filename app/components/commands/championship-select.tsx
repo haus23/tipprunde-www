@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { CheckIcon, FolderIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { useNavigate } from '@remix-run/react';
+import { useLocation, useNavigate } from '@remix-run/react';
 
 import { Command } from 'cmdk';
 import commandScore from 'command-score';
@@ -19,6 +19,7 @@ import { useCurrentView } from '~/utils/use-current-view';
 
 export function ChampionshipSelect() {
   const [isOpen, setIsOpen] = useState(false);
+  const { search } = useLocation();
   const navigate = useNavigate();
   const championships = useChampionships();
   const championship = useChampionship();
@@ -43,7 +44,10 @@ export function ChampionshipSelect() {
   function handleSelect(championshipId: string) {
     setIsOpen(false);
     const championshipSegment = championships[0].id === championshipId ? '' : championshipId;
-    navigate({ pathname: `/${[championshipSegment, viewSegment].filter(Boolean).join('/')}` });
+    navigate({
+      pathname: `/${[championshipSegment, viewSegment].filter(Boolean).join('/')}`,
+      search,
+    });
   }
 
   return (
