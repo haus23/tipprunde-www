@@ -14,6 +14,8 @@ export const meta: V2_MetaFunction = ({ matches, params }) => {
   return [{ title: `Tabelle ${championship.name} - runde.tips` }];
 };
 
+export const handle = { viewPath: '' };
+
 export const loader = async ({ params }: LoaderArgs) => {
   return json(await fetchCurrentTips(params.championship));
 };

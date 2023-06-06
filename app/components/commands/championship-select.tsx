@@ -15,12 +15,14 @@ import {
 import { cn } from '~/utils';
 import { useChampionship } from '~/utils/use-championship';
 import { useChampionships } from '~/utils/use-championships';
+import { useCurrentView } from '~/utils/use-current-view';
 
 export function ChampionshipSelect() {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const championships = useChampionships();
   const championship = useChampionship();
+  const viewSegment = useCurrentView();
 
   useEffect(() => {
     const handleTriggerKey = (event: KeyboardEvent) => {
@@ -41,7 +43,7 @@ export function ChampionshipSelect() {
   function handleSelect(championshipId: string) {
     setIsOpen(false);
     const championshipSegment = championships[0].id === championshipId ? '' : championshipId;
-    navigate(`/${championshipSegment}`);
+    navigate({ pathname: `/${[championshipSegment, viewSegment].filter(Boolean).join('/')}` });
   }
 
   return (

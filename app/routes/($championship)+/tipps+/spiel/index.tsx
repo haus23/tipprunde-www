@@ -12,11 +12,6 @@ import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { MatchTipsTable } from './match-tips-table';
 
-export const loader = async ({ params, request }: LoaderArgs) => {
-  const nr = new URL(request.url).searchParams.get('nr');
-  return json(await fetchMatchTips(nr, params.championship));
-};
-
 export const meta: V2_MetaFunction = ({ matches: routeMatches, params, data }) => {
   const championship = getChampionship(params.championship, routeMatches);
   const { matches, teams } = getChampionshipMatches(routeMatches);
@@ -29,6 +24,13 @@ export const meta: V2_MetaFunction = ({ matches: routeMatches, params, data }) =
       } - runde.tips`,
     },
   ];
+};
+
+export const handle = { viewPath: 'tipps/spiel' };
+
+export const loader = async ({ params, request }: LoaderArgs) => {
+  const nr = new URL(request.url).searchParams.get('nr');
+  return json(await fetchMatchTips(nr, params.championship));
 };
 
 export default function Spiel() {
