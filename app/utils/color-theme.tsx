@@ -71,6 +71,7 @@ const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
         ref={ref}
         onClick={handleToggle}
         variant="toolbar"
+        aria-label="Hell-/Dunkel-Modus umschalten"
         className={cn('overflow-clip', className)}
       >
         <div className="relative h-6 w-6">
