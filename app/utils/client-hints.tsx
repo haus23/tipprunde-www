@@ -89,7 +89,7 @@ export function ClientHintCheck() {
     return () => {
       themeQuery.removeEventListener('change', handleThemeChange);
     };
-  }, []);
+  }, [setTheme]);
 
   return (
     <script
