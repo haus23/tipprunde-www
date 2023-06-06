@@ -1,6 +1,7 @@
 import { type LinksFunction, type V2_MetaFunction } from '@remix-run/node';
 import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
 
+import { ClientHintCheck } from './utils/client-hints';
 import { AppHeader } from '~/components/nav/app-header';
 
 import tailwindStylesheetUrl from './styles/tailwind.css';
@@ -15,6 +16,7 @@ export default function App() {
   return (
     <html lang="de" className="dark">
       <head>
+        <ClientHintCheck />
         <Meta />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
