@@ -1,10 +1,19 @@
-import { type LinksFunction, type V2_MetaFunction } from '@remix-run/node';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
+import { json, type LinksFunction, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+  useLoaderData,
+} from '@remix-run/react';
 
-import { ClientHintCheck } from './utils/client-hints';
+import { ClientHintCheck, getHints } from './utils/client-hints';
 import { AppHeader } from '~/components/nav/app-header';
 
 import tailwindStylesheetUrl from './styles/tailwind.css';
+import { ThemeProvider, useTheme } from './utils/color-theme';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: tailwindStylesheetUrl }];
 
@@ -12,9 +21,19 @@ export const meta: V2_MetaFunction = () => {
   return [{ title: 'runde.tips' }];
 };
 
-export default function App() {
+export const loader = async ({ request }: LoaderArgs) => {
+  return json({
+    requestInfo: {
+      hints: getHints(request),
+    },
+  });
+};
+
+function AppDocument() {
+  const { theme } = useTheme();
+
   return (
-    <html lang="de" className="dark">
+    <html lang="de" className={theme === 'dark' ? theme : ''}>
       <head>
         <ClientHintCheck />
         <Meta />
@@ -37,5 +56,13 @@ export default function App() {
         <LiveReload />
       </body>
     </html>
+  );
+}
+export default function App() {
+  const data = useLoaderData<typeof loader>();
+  return (
+    <ThemeProvider clientHint={data.requestInfo.hints.theme}>
+      <AppDocument />
+    </ThemeProvider>
   );
 }
