@@ -1,8 +1,10 @@
 /**
  * This file contains utilities regarding the color theme. I am using a context to make
- * the client rerender a switched theme. In the epic stack we need to reload the site.
+ * the client rerender a switched theme. In the epic stack you need to reload the site.
  */
 
+import { forwardRef, type ButtonHTMLAttributes, type MouseEvent } from 'react';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import {
   createContext,
   useState,
@@ -11,6 +13,8 @@ import {
   type SetStateAction,
   useContext,
 } from 'react';
+import { Button } from '~/components/(ui)/atoms/button';
+import { cn } from '.';
 
 const themes = ['dark', 'light'] as const;
 type Theme = (typeof themes)[number];
@@ -39,4 +43,32 @@ function useTheme() {
   return context;
 }
 
-export { useTheme, ThemeProvider };
+type ThemeToggleProps = ButtonHTMLAttributes<HTMLButtonElement>;
+
+const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
+  ({ onClick, className, ...props }, ref) => {
+    const { theme, setTheme } = useTheme();
+
+    function handleToggle(ev: MouseEvent<HTMLButtonElement>) {
+      setTheme((theme === 'dark' && 'light') || 'dark');
+      onClick && onClick(ev);
+    }
+
+    return (
+      <Button
+        ref={ref}
+        onClick={handleToggle}
+        variant="toolbar"
+        className={cn('overflow-clip', className)}
+      >
+        <div className="relative h-6 w-6">
+          <MoonIcon className="absolute inset-0 h-6 origin-[50%_100px] rotate-90 transform transition-transform duration-500 dark:rotate-0" />
+          <SunIcon className="absolute inset-0 h-6 origin-[50%_100px] rotate-0 transform transition-transform duration-500 dark:-rotate-90" />
+        </div>
+      </Button>
+    );
+  }
+);
+ThemeToggle.displayName = 'ThemeToggle';
+
+export { useTheme, ThemeProvider, ThemeToggle };

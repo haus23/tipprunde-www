@@ -14,6 +14,7 @@ import {
 import { useChampionship } from '~/utils/use-championship';
 import { ChampionshipSelect } from '../commands/championship-select';
 import { Logo } from '../brand/logo';
+import { ThemeToggle } from '~/utils/color-theme';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
@@ -88,6 +89,17 @@ export function NavMobile() {
                     </Nav.Link>
                   </Nav.Item>
                 ))}
+                <Nav.Item>
+                  <hr className="mb-2 border-line" />
+                </Nav.Item>
+                <Nav.Item className="px-2">
+                  <div className="flex items-center justify-between">
+                    <span className="px-6 py-2">Hell-/Dunkel-Modus</span>
+                    <DialogClose asChild>
+                      <ThemeToggle />
+                    </DialogClose>
+                  </div>
+                </Nav.Item>
               </Nav.List>
             </Nav.Root>
             <DialogClose className="absolute right-2 top-4 rounded p-1 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">

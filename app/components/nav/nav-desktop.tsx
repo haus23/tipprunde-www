@@ -3,6 +3,7 @@ import * as Nav from '@radix-ui/react-navigation-menu';
 
 import { Logo } from '../brand/logo';
 import { ChampionshipSelect } from '../commands/championship-select';
+import { ThemeToggle } from '~/utils/color-theme';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
@@ -44,8 +45,9 @@ export function NavDesktop() {
           ))}
         </Nav.List>
       </Nav.Root>
-      <div>
+      <div className="flex gap-x-2">
         <ChampionshipSelect />
+        <ThemeToggle />
       </div>
     </div>
   );
