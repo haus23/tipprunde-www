@@ -4,7 +4,6 @@ import { fetchMatches } from '~/backend/queries';
 
 export const loader = async ({ params }: LoaderArgs) => {
   const matches = await fetchMatches(params.championship);
-  console.log('loading matches');
   return json({ matches });
 };
 
