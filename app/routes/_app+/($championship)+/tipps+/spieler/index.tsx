@@ -164,10 +164,10 @@ export default function Spieler() {
                       <th scope="col" className="w-full px-2 py-3 text-left sm:px-4 md:px-6">
                         <span className="font-medium uppercase">Spiel</span>
                       </th>
-                      <th scope="col" className="px-2 text-center sm:px-4 md:px-6 ">
+                      <th scope="col" className="px-2 text-center sm:px-4 md:px-6">
                         <span className="font-medium uppercase">Ergebnis</span>
                       </th>
-                      <th scope="col" className="px-2 text-center sm:px-4 md:px-6 ">
+                      <th scope="col" className="pl-2 pr-6 text-center sm:pl-4 md:pl-6">
                         <span className="font-medium uppercase">Tipp</span>
                       </th>
                       <th scope="col" className="px-2 text-center sm:px-4 md:px-6">
@@ -201,7 +201,7 @@ export default function Spieler() {
                             </Link>
                           </td>
                           <td className="px-2 text-center sm:px-4 md:px-6">{m.result}</td>
-                          <td className="relative px-2 text-center sm:px-4 md:px-6">
+                          <td className="relative pl-2 pr-6 text-center sm:pl-4 md:pl-6">
                             <span>{tip?.tip}</span>
                             {info && (
                               <span className="absolute right-0">

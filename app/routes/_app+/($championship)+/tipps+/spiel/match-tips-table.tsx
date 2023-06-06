@@ -92,7 +92,7 @@ export function MatchTipsTable({ tips, match }: { tips: Record<string, Tip>; mat
                   {player.account.name}
                 </Link>
               </td>
-              <td className="relative px-2 text-center sm:px-4 md:px-6">
+              <td className="relative pl-2 pr-6 text-center sm:pl-4 md:pl-6">
                 <span>{tip?.tip}</span>
                 {highlighted && (
                   <span className="absolute right-0">
