@@ -1,6 +1,35 @@
 # Changelog
 
 
+## v0.6.0
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.5.1...v0.6.0)
+
+
+### 🚀 Enhancements
+
+  - Add client-hints cookie. Polyfilling missing standard. ([ba64dd8](https://github.com/haus23/tipprunde/commit/ba64dd8))
+  - Render color theme based on the client hint. ([927ee8c](https://github.com/haus23/tipprunde/commit/927ee8c))
+  - Add theme toggle to the navs. Implements client side theme switch. ([67aa5c1](https://github.com/haus23/tipprunde/commit/67aa5c1))
+  - Persist user preference for color theme in session cookie. ([6b3c53d](https://github.com/haus23/tipprunde/commit/6b3c53d))
+
+### 🩹 Fixes
+
+  - Add missing dependency. ([2c2a50c](https://github.com/haus23/tipprunde/commit/2c2a50c))
+  - Overlapping icon on small devices. ([4e5156f](https://github.com/haus23/tipprunde/commit/4e5156f))
+  - **seo:** Add button label. ([f91f2f1](https://github.com/haus23/tipprunde/commit/f91f2f1))
+  - **a11y:** Tweak Lighthouse. ([443ca66](https://github.com/haus23/tipprunde/commit/443ca66))
+  - Move charset tag up. ([34f2fd6](https://github.com/haus23/tipprunde/commit/34f2fd6))
+
+### 💅 Refactors
+
+  - Nest additional loader to make the root loader data independent. ([926067a](https://github.com/haus23/tipprunde/commit/926067a))
+  - Rename initial theme prop. ([8f75437](https://github.com/haus23/tipprunde/commit/8f75437))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.5.1
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.5.0...v0.5.1)
