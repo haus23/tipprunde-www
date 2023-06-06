@@ -74,6 +74,8 @@ export function getHints(request?: Request) {
  * @returns inline script element that checks for client hints and sets cookies
  * if they are not set then reloads the page if any cookie was set to an
  * inaccurate value.
+ *
+ * Includes a tweak for chrome lighthouse, see https://gist.github.com/vielhuber/8330860726b3573b8a66e5e16c7f89c3
  */
 export function ClientHintCheck() {
   const { setTheme } = useTheme();
@@ -115,7 +117,11 @@ for (const hint of hints) {
 		document.cookie = hint.name + '=' + hint.actual;
 	}
 }
-if (cookieChanged) {
+let lighthouse = false;
+if( navigator.userAgent.match(/(Mozilla\\/5\\.0 \\(Linux; Android 11; moto g power \\(2022\\)\\) AppleWebKit\\/537\\.36 \\(KHTML, like Gecko\\) Chrome\\/109\\.0.0.0 Mobile Safari\\/537\\.36)|(Mozilla\\/5\\.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit\\/537\\.36 \\(KHTML, like Gecko\\) Chrome\\/109\\.0\\.0\\.0 Safari\\/537\\.36)|(Speed Insights)|(Chrome-Lighthouse)|(PSTS[\\d\\.]+)/) ) {
+  lighthouse = true;
+}
+if (cookieChanged && !lighthouse) {
 	window.location.reload();
 }
 			`,
