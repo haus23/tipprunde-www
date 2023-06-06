@@ -3,7 +3,7 @@
  * the client rerender a switched theme. In the epic stack you need to reload the site.
  */
 
-import { forwardRef, type ButtonHTMLAttributes, type MouseEvent } from 'react';
+import { forwardRef, type ButtonHTMLAttributes, type MouseEvent, useCallback } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import {
   createContext,
@@ -15,6 +15,7 @@ import {
 } from 'react';
 import { Button } from '~/components/(ui)/atoms/button';
 import { cn } from '.';
+import { useFetcher } from '@remix-run/react';
 
 const themes = ['dark', 'light'] as const;
 type Theme = (typeof themes)[number];
@@ -29,7 +30,18 @@ type ThemeProviderProps = {
 };
 
 function ThemeProvider({ children, requestedTheme }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(requestedTheme);
+  const [theme, setThemeState] = useState<Theme>(requestedTheme);
+
+  const persistTheme = useFetcher();
+
+  const setTheme = useCallback(
+    (cb: Parameters<typeof setThemeState>[0]) => {
+      const newTheme = typeof cb === 'function' ? cb(theme) : cb;
+      setThemeState(newTheme);
+      persistTheme.submit({ theme: newTheme }, { action: 'resource/theme', method: 'post' });
+    },
+    [theme, persistTheme]
+  );
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
@@ -71,4 +83,4 @@ const ThemeToggle = forwardRef<HTMLButtonElement, ThemeToggleProps>(
 );
 ThemeToggle.displayName = 'ThemeToggle';
 
-export { useTheme, ThemeProvider, ThemeToggle };
+export { type Theme, ThemeProvider, ThemeToggle, useTheme };

@@ -14,6 +14,7 @@ import { AppHeader } from '~/components/nav/app-header';
 
 import tailwindStylesheetUrl from './styles/tailwind.css';
 import { ThemeProvider, useTheme } from './utils/color-theme';
+import { getSession } from './utils/server/session';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: tailwindStylesheetUrl }];
 
@@ -22,9 +23,14 @@ export const meta: V2_MetaFunction = () => {
 };
 
 export const loader = async ({ request }: LoaderArgs) => {
+  const session = await getSession(request.headers.get('Cookie'));
+
   return json({
     requestInfo: {
       hints: getHints(request),
+      session: {
+        theme: session.get('theme'),
+      },
     },
   });
 };
@@ -60,8 +66,10 @@ function AppDocument() {
 }
 export default function App() {
   const data = useLoaderData<typeof loader>();
+  const theme = data.requestInfo.session.theme || data.requestInfo.hints.theme || 'dark';
+
   return (
-    <ThemeProvider requestedTheme={data.requestInfo.hints.theme}>
+    <ThemeProvider requestedTheme={theme}>
       <AppDocument />
     </ThemeProvider>
   );
