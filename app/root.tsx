@@ -61,7 +61,7 @@ function AppDocument() {
 export default function App() {
   const data = useLoaderData<typeof loader>();
   return (
-    <ThemeProvider clientHint={data.requestInfo.hints.theme}>
+    <ThemeProvider requestedTheme={data.requestInfo.hints.theme}>
       <AppDocument />
     </ThemeProvider>
   );

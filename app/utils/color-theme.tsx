@@ -21,11 +21,11 @@ const ThemeContext = createContext<ThemeContextType>(undefined as never);
 
 type ThemeProviderProps = {
   children: ReactNode;
-  clientHint: Theme;
+  requestedTheme: Theme;
 };
 
-function ThemeProvider({ children, clientHint }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(clientHint);
+function ThemeProvider({ children, requestedTheme }: ThemeProviderProps) {
+  const [theme, setTheme] = useState<Theme>(requestedTheme);
 
   return <ThemeContext.Provider value={{ theme, setTheme }}>{children}</ThemeContext.Provider>;
 }
