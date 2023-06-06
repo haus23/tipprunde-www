@@ -41,9 +41,9 @@ function AppDocument() {
   return (
     <html lang="de" className={theme === 'dark' ? theme : ''}>
       <head>
+        <meta charSet="utf-8" />
         <ClientHintCheck />
         <Meta />
-        <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width,initial-scale=1" />
         <meta name="description" content="Tipprunde der Haus23 Freunde" />
         <Links />
