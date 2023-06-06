@@ -1,6 +1,33 @@
 # Changelog
 
 
+## v0.5.1
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.5.0...v0.5.1)
+
+
+### 🚀 Enhancements
+
+  - Make table sortable. ([27831fe](https://github.com/haus23/tipprunde/commit/27831fe))
+  - Make select component groupable. ([68465af](https://github.com/haus23/tipprunde/commit/68465af))
+  - Stay on current view when changing championship. ([f45437a](https://github.com/haus23/tipprunde/commit/f45437a))
+  - Keep the search string while switching championships. Handle edge case in matches view. ([ace4fba](https://github.com/haus23/tipprunde/commit/ace4fba))
+
+### 🩹 Fixes
+
+  - Delete the old routes. ([bc5e38a](https://github.com/haus23/tipprunde/commit/bc5e38a))
+  - Provide bot robots file. ([ddff60c](https://github.com/haus23/tipprunde/commit/ddff60c))
+  - **a11y:** Add labels to the info-box trigger buttons. ([7a8dc42](https://github.com/haus23/tipprunde/commit/7a8dc42))
+  - Wrong link href ([be8a7c7](https://github.com/haus23/tipprunde/commit/be8a7c7))
+
+### 💅 Refactors
+
+  - Make helpers error prune. ([eac51d0](https://github.com/haus23/tipprunde/commit/eac51d0))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.5.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.4.0...v0.5.0)
