@@ -1,5 +1,12 @@
-import { json, type LinksFunction, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
 import {
+  json,
+  type LinksFunction,
+  type LoaderArgs,
+  type SerializeFrom,
+  type V2_MetaFunction,
+} from '@remix-run/node';
+import {
+  Link,
   Links,
   LiveReload,
   Meta,
@@ -7,6 +14,8 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
+  useLocation,
+  useRouteLoaderData,
 } from '@remix-run/react';
 
 import { ClientHintCheck, getHints } from './utils/client-hints';
@@ -15,6 +24,7 @@ import { AppHeader } from '~/components/nav/app-header';
 import tailwindStylesheetUrl from './styles/tailwind.css';
 import { ThemeProvider, useTheme } from './utils/color-theme';
 import { getSession } from './utils/server/session';
+import { FaceFrownIcon } from '@heroicons/react/24/outline';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: tailwindStylesheetUrl }];
 
@@ -64,6 +74,62 @@ function AppDocument() {
     </html>
   );
 }
+
+function ErrorDocument() {
+  const { theme } = useTheme();
+  const { pathname } = useLocation();
+
+  return (
+    <html lang="de" className={theme === 'dark' ? `${theme} h-full` : 'h-full'}>
+      <head>
+        <meta charSet="utf-8" />
+        <ClientHintCheck />
+        <Meta />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="description" content="Tipprunde der Haus23 Freunde" />
+        <Links />
+      </head>
+      <body className="h-full bg-background font-medium text-foreground">
+        <div
+          id="error"
+          style={{ display: 'none' }}
+          className="flex min-h-full flex-col items-center justify-center gap-y-4 text-destructive-foreground"
+        >
+          <div className="flex justify-center text-destructive">
+            <FaceFrownIcon className="h-40" />
+          </div>
+          <p className="mx-4 text-center text-3xl leading-snug [text-wrap:balance]">
+            Hoppla, hier stimmt was nicht!
+          </p>
+          {pathname === '/' ? (
+            <p className="mt-4 block text-2xl">Bitte Micha informieren!</p>
+          ) : (
+            <Link to="/" className="mt-4 block text-2xl hover:underline">
+              Zur Startseite
+            </Link>
+          )}
+        </div>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.getElementById('error').style.display = 'flex';`,
+          }}
+        ></script>
+      </body>
+    </html>
+  );
+}
+
+export function ErrorBoundary() {
+  const data = useRouteLoaderData('root') as SerializeFrom<typeof loader> | undefined;
+  const theme = data?.requestInfo.session.theme || data?.requestInfo.hints.theme || 'dark';
+
+  return (
+    <ThemeProvider requestedTheme={theme}>
+      <ErrorDocument />
+    </ThemeProvider>
+  );
+}
+
 export default function App() {
   const data = useLoaderData<typeof loader>();
   const theme = data.requestInfo.session.theme || data.requestInfo.hints.theme || 'dark';

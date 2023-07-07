@@ -32,6 +32,9 @@
     --border-hover: 255 3.7% 78.8%; /* Mauve 8 */
     --primary-border-hover: 252 68.6% 76.3%; /* Violet 8 */
 
+    --destructive: 358 75% 59%;
+    --destructive-foreground: 354 50% 14.6%;
+
     /* -------------------------------- */
 
     --popover: 0 0% 100%;
@@ -44,9 +47,6 @@
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 100% 50%;
-    --destructive-foreground: 210 40% 98%;
   }
 
   .dark {
@@ -78,6 +78,9 @@
     --border-hover: 247 4.8% 32.5%;
     --primary-border-hover: 250 51.8% 51.2%;
 
+    --destructive: 358 75% 59%;
+    --destructive-foreground: 351 89% 96%;
+
     /* -------------------------------- */
 
     --popover: 224 71% 4%;
@@ -90,9 +93,6 @@
 
     --secondary: 222.2 47.4% 11.2%;
     --secondary-foreground: 210 40% 98%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
   }
 
   html {
