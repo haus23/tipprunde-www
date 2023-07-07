@@ -1,6 +1,36 @@
 # Changelog
 
 
+## v0.7.0
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.6.0...v0.7.0)
+
+### 🚀 Enhancements
+
+- Validate championship. ([7517ca3](https://github.com/haus23/tipprunde/commit/7517ca3))
+
+### 🩹 Fixes
+
+- Set SameSite cookie attribute. ([d6a6dcd](https://github.com/haus23/tipprunde/commit/d6a6dcd))
+- Provide proper error boundary. ([44e11b8](https://github.com/haus23/tipprunde/commit/44e11b8))
+- Drop local changelogen installation. ([aa9ddc3](https://github.com/haus23/tipprunde/commit/aa9ddc3))
+
+### 💅 Refactors
+
+- Remove vercel adapter and config. ([4bcd1ee](https://github.com/haus23/tipprunde/commit/4bcd1ee))
+- Update to remix headers v2 ([62f037b](https://github.com/haus23/tipprunde/commit/62f037b))
+- Opt-out from v2 default format by now. ([a15ccea](https://github.com/haus23/tipprunde/commit/a15ccea))
+- Update server entry. ([144cc40](https://github.com/haus23/tipprunde/commit/144cc40))
+- Change to v2 dev server. ([157040e](https://github.com/haus23/tipprunde/commit/157040e))
+
+### 🏡 Chore
+
+- Update deps. ([1e4501b](https://github.com/haus23/tipprunde/commit/1e4501b))
+
+### ❤️  Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.6.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.5.1...v0.6.0)
