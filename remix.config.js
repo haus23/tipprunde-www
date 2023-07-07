@@ -7,10 +7,14 @@ module.exports = {
   routes: async (defineRoutes) => {
     return flatRoutes('routes', defineRoutes);
   },
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // publicPath: "/build/",
+
+  // Features
   tailwind: true,
+
+  // V2 Default Opt-Out
+  serverModuleFormat: 'cjs',
+
+  // V2 Preview
   future: {
     v2_errorBoundary: true,
     v2_headers: true,
