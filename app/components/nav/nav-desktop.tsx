@@ -22,7 +22,7 @@ export function NavDesktop() {
             <Nav.Link asChild>
               <Link to="/" className="group flex items-center focus:outline-none">
                 <div className="flex items-center gap-x-2 rounded-md p-2 pl-1 ring-offset-background group-hover:bg-neutral-hover group-focus-visible:ring-2 group-focus-visible:ring-ring group-focus-visible:ring-offset-2">
-                  <Logo className="h-10" />
+                  <Logo className="h-12 w-12" />
                   <h1 className="text-xl">runde.tips</h1>
                 </div>
               </Link>

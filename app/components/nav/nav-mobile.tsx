@@ -63,7 +63,7 @@ export function NavMobile() {
                       className="m-1 inline-flex items-center rounded px-2 py-1 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       <div className="flex items-center gap-x-2">
-                        <Logo className="h-10" />
+                        <Logo className="h-10 w-12" />
                         <h1 className="text-xl">runde.tips</h1>
                       </div>
                     </Link>
