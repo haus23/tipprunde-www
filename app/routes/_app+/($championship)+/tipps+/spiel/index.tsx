@@ -63,7 +63,9 @@ export default function Spiel() {
           value={match.id}
           onValueChanged={handleSelect}
           options={matches}
-          display={(m) => `${teams[m.hometeamId].shortname} - ${teams[m.awayteamId].shortname}`}
+          display={(m) =>
+            `${teams[m.hometeamId]?.shortname || 'TBA'} - ${teams[m.awayteamId]?.shortname} || 'TBA`
+          }
           groups={rounds}
           groupKey="roundId"
           groupDisplay={(r) => `Runde ${r.nr}`}
@@ -77,7 +79,7 @@ export default function Spiel() {
           </div>
           <div className="space-y-1">
             <p className="text-xs font-medium uppercase">Wo</p>
-            <p className="font-semibold text-accent-foreground">{leagues[match.leagueId].name}</p>
+            <p className="font-semibold text-accent-foreground">{leagues[match.leagueId]?.name}</p>
           </div>
           <div className="space-y-1">
             <p className="text-xs font-medium uppercase">Ergebnis</p>

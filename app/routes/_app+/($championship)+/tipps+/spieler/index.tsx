@@ -193,10 +193,10 @@ export default function Spieler() {
                               className="inline-block w-full py-2.5 hover:text-accent-foreground hover:underline"
                             >
                               <span className="hidden md:inline">
-                                {teams[m.hometeamId].name} - {teams[m.awayteamId].name}
+                                {teams[m.hometeamId]?.name} - {teams[m.awayteamId]?.name}
                               </span>
                               <span className="md:hidden">
-                                {teams[m.hometeamId].shortname} - {teams[m.awayteamId].shortname}
+                                {teams[m.hometeamId]?.shortname} - {teams[m.awayteamId]?.shortname}
                               </span>
                             </Link>
                           </td>
