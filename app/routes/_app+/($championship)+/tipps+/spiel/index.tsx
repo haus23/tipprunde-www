@@ -19,9 +19,9 @@ export const meta: V2_MetaFunction = ({ matches: routeMatches, params, data }) =
   const match = matches.find((m) => m.id === data.matchId) || matches[0];
   return [
     {
-      title: `Tipps ${teams[match.hometeamId].shortname} - ${teams[match.awayteamId].shortname}  ${
-        championship.name
-      } - runde.tips`,
+      title: `Tipps ${teams[match.hometeamId]?.shortname || 'TBA'} - ${
+        teams[match.awayteamId]?.shortname || 'TBA'
+      }  ${championship.name} - runde.tips`,
     },
   ];
 };
