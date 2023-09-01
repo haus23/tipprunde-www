@@ -64,7 +64,9 @@ export default function Spiel() {
           onValueChanged={handleSelect}
           options={matches}
           display={(m) =>
-            `${teams[m.hometeamId]?.shortname || 'TBA'} - ${teams[m.awayteamId]?.shortname} || 'TBA`
+            `${teams[m.hometeamId]?.shortname || 'TBA'} - ${
+              teams[m.awayteamId]?.shortname || 'TBA'
+            }`
           }
           groups={rounds}
           groupKey="roundId"
