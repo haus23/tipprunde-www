@@ -12,11 +12,11 @@ import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { MatchTipsTable } from './match-tips-table';
 
-export const meta: MetaFunction = ({ matches: routeMatches, params, data }) => {
+export const meta: MetaFunction<typeof loader> = ({ matches: routeMatches, params, data }) => {
   const championship = getChampionship(params.championship, routeMatches);
   const { matches, teams } = getChampionshipMatches(routeMatches);
 
-  const match = matches.find((m) => m.id === data.matchId) || matches[0];
+  const match = matches.find((m) => m.id === data?.matchId) || matches[0];
   return [
     {
       title: `Tipps ${teams[match.hometeamId]?.shortname || 'TBA'} - ${

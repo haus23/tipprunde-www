@@ -16,11 +16,11 @@ import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
-export const meta: MetaFunction = ({ matches, params, data }) => {
+export const meta: MetaFunction<typeof loader> = ({ matches, params, data }) => {
   const championship = getChampionship(params.championship, matches);
 
   const players = getChampionshipPlayers(matches);
-  const player = players.find((p) => p.id === data.playerId) || players[0];
+  const player = players.find((p) => p.id === data?.playerId) || players[0];
   return [{ title: `Tipps ${player.account.name} ${championship.name} - runde.tips` }];
 };
 
