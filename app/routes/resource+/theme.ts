@@ -1,8 +1,8 @@
-import { json, type ActionArgs } from '@remix-run/node';
+import { json, type DataFunctionArgs } from '@remix-run/node';
 import type { Theme } from '~/utils/color-theme';
 import { getSession, commitSession } from '~/utils/server/session';
 
-export const action = async function ({ request }: ActionArgs) {
+export const action = async function ({ request }: DataFunctionArgs) {
   const session = await getSession(request.headers.get('Cookie'));
   const requestText = await request.text();
   const form = new URLSearchParams(requestText);

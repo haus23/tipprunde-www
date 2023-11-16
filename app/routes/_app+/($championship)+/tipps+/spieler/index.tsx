@@ -1,4 +1,4 @@
-import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
+import { json, type DataFunctionArgs, type MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
 import { fetchPlayerTips } from '~/backend/queries';
 
@@ -16,7 +16,7 @@ import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
-export const meta: V2_MetaFunction = ({ matches, params, data }) => {
+export const meta: MetaFunction = ({ matches, params, data }) => {
   const championship = getChampionship(params.championship, matches);
 
   const players = getChampionshipPlayers(matches);
@@ -26,7 +26,7 @@ export const meta: V2_MetaFunction = ({ matches, params, data }) => {
 
 export const handle = { viewPath: 'tipps/spieler' };
 
-export const loader = async ({ params, request }: LoaderArgs) => {
+export const loader = async ({ params, request }: DataFunctionArgs) => {
   const accountId = new URL(request.url).searchParams.get('name');
   return json(await fetchPlayerTips(accountId, params.championship));
 };

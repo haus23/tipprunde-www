@@ -1,5 +1,5 @@
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
-import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
+import { json, type DataFunctionArgs, type MetaFunction } from '@remix-run/node';
 import { Link, useLoaderData } from '@remix-run/react';
 import { Fragment } from 'react';
 import { fetchCurrentTips } from '~/backend/queries';
@@ -9,14 +9,14 @@ import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
-export const meta: V2_MetaFunction = ({ matches, params }) => {
+export const meta: MetaFunction = ({ matches, params }) => {
   const championship = getChampionship(params.championship, matches);
   return [{ title: `Tabelle ${championship.name} - runde.tips` }];
 };
 
 export const handle = { viewPath: '' };
 
-export const loader = async ({ params }: LoaderArgs) => {
+export const loader = async ({ params }: DataFunctionArgs) => {
   return json(await fetchCurrentTips(params.championship));
 };
 

@@ -1,9 +1,9 @@
 import {
   json,
   type LinksFunction,
-  type LoaderArgs,
+  type DataFunctionArgs,
   type SerializeFrom,
-  type V2_MetaFunction,
+  type MetaFunction,
 } from '@remix-run/node';
 import {
   Link,
@@ -28,11 +28,11 @@ import { FaceFrownIcon } from '@heroicons/react/24/outline';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: tailwindStylesheetUrl }];
 
-export const meta: V2_MetaFunction = () => {
+export const meta: MetaFunction = () => {
   return [{ title: 'runde.tips' }];
 };
 
-export const loader = async ({ request }: LoaderArgs) => {
+export const loader = async ({ request }: DataFunctionArgs) => {
   const session = await getSession(request.headers.get('Cookie'));
 
   return json({

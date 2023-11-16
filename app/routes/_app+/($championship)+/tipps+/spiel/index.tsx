@@ -1,5 +1,5 @@
 import { ExclamationTriangleIcon } from '@heroicons/react/24/outline';
-import { json, redirect, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
+import { json, redirect, type DataFunctionArgs, type MetaFunction } from '@remix-run/node';
 import { useLoaderData, useSearchParams } from '@remix-run/react';
 import { fetchMatchTips } from '~/backend/queries';
 
@@ -12,7 +12,7 @@ import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { MatchTipsTable } from './match-tips-table';
 
-export const meta: V2_MetaFunction = ({ matches: routeMatches, params, data }) => {
+export const meta: MetaFunction = ({ matches: routeMatches, params, data }) => {
   const championship = getChampionship(params.championship, routeMatches);
   const { matches, teams } = getChampionshipMatches(routeMatches);
 
@@ -28,7 +28,7 @@ export const meta: V2_MetaFunction = ({ matches: routeMatches, params, data }) =
 
 export const handle = { viewPath: 'tipps/spiel' };
 
-export const loader = async ({ params, request }: LoaderArgs) => {
+export const loader = async ({ params, request }: DataFunctionArgs) => {
   const nr = new URL(request.url).searchParams.get('nr');
   try {
     const matchTips = await fetchMatchTips(nr, params.championship);
