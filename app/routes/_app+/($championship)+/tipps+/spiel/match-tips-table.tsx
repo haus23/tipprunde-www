@@ -86,6 +86,7 @@ export function MatchTipsTable({ tips, match }: { tips: Record<string, Tip>; mat
             <tr className={cn(highlighted && 'bg-primary')} key={player.id}>
               <td className="w-full px-2 py-2.5 sm:px-4 md:px-6 ">
                 <Link
+                  prefetch="intent"
                   to={`../spieler?name=${player.playerId}`}
                   className="inline-block w-full hover:text-accent-foreground hover:underline"
                 >

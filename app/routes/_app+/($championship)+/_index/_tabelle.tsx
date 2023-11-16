@@ -74,6 +74,7 @@ export default function Tabelle() {
                 <td className="pl-4 pr-2 text-right md:px-6">{currentRank}</td>
                 <td className="w-full px-2 py-2.5 md:px-6">
                   <Link
+                    prefetch="intent"
                     className="block hover:text-accent-foreground hover:underline"
                     to={`tipps/spieler?name=${p.playerId}`}
                   >
