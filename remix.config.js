@@ -7,20 +7,6 @@ module.exports = {
   routes: async (defineRoutes) => {
     return flatRoutes('routes', defineRoutes);
   },
-
-  // Features
-  tailwind: true,
-
   // V2 Default Opt-Out
   serverModuleFormat: 'cjs',
-
-  // V2 Preview
-  future: {
-    v2_dev: true,
-    v2_errorBoundary: true,
-    v2_headers: true,
-    v2_meta: true,
-    v2_normalizeFormMethod: true,
-    v2_routeConvention: true,
-  },
 };
