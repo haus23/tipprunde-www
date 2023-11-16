@@ -6,7 +6,6 @@ import {
   type MetaFunction,
 } from '@remix-run/node';
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
@@ -25,6 +24,7 @@ import tailwindStylesheetUrl from './styles/tailwind.css';
 import { ThemeProvider, useTheme } from './utils/color-theme';
 import { getSession } from './utils/server/session';
 import { FaceFrownIcon } from '@heroicons/react/24/outline';
+import { Link } from './components/(ui)/atoms/link';
 
 export const links: LinksFunction = () => [{ rel: 'stylesheet', href: tailwindStylesheetUrl }];
 

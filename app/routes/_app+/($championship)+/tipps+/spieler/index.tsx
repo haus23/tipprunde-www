@@ -1,6 +1,7 @@
 import { json, type DataFunctionArgs, type MetaFunction } from '@remix-run/node';
-import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
+import { useLoaderData, useSearchParams } from '@remix-run/react';
 import { fetchPlayerTips } from '~/backend/queries';
+import { Link } from '~/components/(ui)/atoms/link';
 
 import { Select } from '~/components/(ui)/elements/select';
 import {
@@ -61,7 +62,7 @@ export default function Spieler() {
 
   function handleSelect(value: string) {
     const accId = players.find((p) => p.id === value)?.account.id;
-    setSearchParams({ ...searchParams, name: accId });
+    setSearchParams({ ...searchParams, name: accId }, { unstable_viewTransition: true });
   }
 
   function scrollToRound(roundId: string) {

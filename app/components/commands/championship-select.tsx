@@ -44,10 +44,13 @@ export function ChampionshipSelect() {
   function handleSelect(championshipId: string) {
     setIsOpen(false);
     const championshipSegment = championships[0].id === championshipId ? '' : championshipId;
-    navigate({
-      pathname: `/${[championshipSegment, viewSegment].filter(Boolean).join('/')}`,
-      search,
-    });
+    navigate(
+      {
+        pathname: `/${[championshipSegment, viewSegment].filter(Boolean).join('/')}`,
+        search,
+      },
+      { unstable_viewTransition: true }
+    );
   }
 
   return (

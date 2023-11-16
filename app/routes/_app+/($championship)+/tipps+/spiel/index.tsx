@@ -49,7 +49,7 @@ export default function Spiel() {
 
   function handleSelect(value: string) {
     const nr = matches.find((m) => m.id === value)?.nr;
-    setSearchParams({ ...searchParams, nr: String(nr) });
+    setSearchParams({ ...searchParams, nr: String(nr) }, { unstable_viewTransition: true });
   }
 
   return (

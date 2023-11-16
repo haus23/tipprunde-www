@@ -3,9 +3,11 @@
  * the client rerender a switched theme. In the epic stack you need to reload the site.
  */
 
-import { forwardRef, type ButtonHTMLAttributes, type MouseEvent, useCallback } from 'react';
-import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import {
+  forwardRef,
+  type ButtonHTMLAttributes,
+  type MouseEvent,
+  useCallback,
   createContext,
   useState,
   type Dispatch,
@@ -13,6 +15,7 @@ import {
   type SetStateAction,
   useContext,
 } from 'react';
+import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { Button } from '~/components/(ui)/atoms/button';
 import { cn } from '.';
 import { useFetcher } from '@remix-run/react';

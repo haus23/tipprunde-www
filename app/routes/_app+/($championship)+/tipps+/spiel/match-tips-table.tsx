@@ -1,6 +1,6 @@
 import type { Match, Tip } from '@haus23/tipprunde-types';
 import { ArrowDownIcon, ArrowUpIcon, ChevronUpDownIcon } from '@heroicons/react/24/outline';
-import { Link } from '@remix-run/react';
+import { Link } from '~/components/(ui)/atoms/link';
 import { InfoBox } from '~/components/(ui)/molecules/info-box';
 import { cn } from '~/utils';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';

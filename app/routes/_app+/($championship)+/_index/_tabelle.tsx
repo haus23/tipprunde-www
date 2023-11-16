@@ -1,8 +1,9 @@
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import { json, type DataFunctionArgs, type MetaFunction } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 import { Fragment } from 'react';
 import { fetchCurrentTips } from '~/backend/queries';
+import { Link } from '~/components/(ui)/atoms/link';
 import { InfoBox } from '~/components/(ui)/molecules/info-box';
 import { cn } from '~/utils';
 import { getChampionship } from '~/utils/route-match-helper';

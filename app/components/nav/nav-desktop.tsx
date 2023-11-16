@@ -1,9 +1,11 @@
-import { Link, NavLink, useParams } from '@remix-run/react';
+import { useParams } from '@remix-run/react';
 import * as Nav from '@radix-ui/react-navigation-menu';
 
 import { Logo } from '../brand/logo';
 import { ChampionshipSelect } from '../commands/championship-select';
 import { ThemeToggle } from '~/utils/color-theme';
+import { Link } from '../(ui)/atoms/link';
+import { NavLink } from '../(ui)/atoms/nav-link';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
