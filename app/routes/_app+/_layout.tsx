@@ -1,5 +1,5 @@
 import { json, type DataFunctionArgs } from '@remix-run/node';
-import { Outlet, type ShouldRevalidateFunction } from '@remix-run/react';
+import { Outlet } from '@remix-run/react';
 import { fetchChampionships } from '~/backend/queries';
 
 export const loader = async ({ params }: DataFunctionArgs) => {
@@ -16,8 +16,6 @@ export const loader = async ({ params }: DataFunctionArgs) => {
 
   return json({ championships });
 };
-
-export const shouldRevalidate: ShouldRevalidateFunction = () => false;
 
 export default function AppLayout() {
   return <Outlet />;
