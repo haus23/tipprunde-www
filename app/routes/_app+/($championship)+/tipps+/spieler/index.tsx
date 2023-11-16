@@ -1,6 +1,7 @@
-import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
-import { Link, useLoaderData, useSearchParams } from '@remix-run/react';
+import { json, type DataFunctionArgs, type MetaFunction } from '@remix-run/node';
+import { useLoaderData, useSearchParams } from '@remix-run/react';
 import { fetchPlayerTips } from '~/backend/queries';
+import { Link } from '~/components/(ui)/atoms/link';
 
 import { Select } from '~/components/(ui)/elements/select';
 import {
@@ -16,17 +17,17 @@ import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipMatches } from '~/utils/use-championship-matches';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
-export const meta: V2_MetaFunction = ({ matches, params, data }) => {
+export const meta: MetaFunction<typeof loader> = ({ matches, params, data }) => {
   const championship = getChampionship(params.championship, matches);
 
   const players = getChampionshipPlayers(matches);
-  const player = players.find((p) => p.id === data.playerId) || players[0];
+  const player = players.find((p) => p.id === data?.playerId) || players[0];
   return [{ title: `Tipps ${player.account.name} ${championship.name} - runde.tips` }];
 };
 
 export const handle = { viewPath: 'tipps/spieler' };
 
-export const loader = async ({ params, request }: LoaderArgs) => {
+export const loader = async ({ params, request }: DataFunctionArgs) => {
   const accountId = new URL(request.url).searchParams.get('name');
   return json(await fetchPlayerTips(accountId, params.championship));
 };
@@ -61,7 +62,7 @@ export default function Spieler() {
 
   function handleSelect(value: string) {
     const accId = players.find((p) => p.id === value)?.account.id;
-    setSearchParams({ ...searchParams, name: accId });
+    setSearchParams({ ...searchParams, name: accId }, { unstable_viewTransition: true });
   }
 
   function scrollToRound(roundId: string) {
@@ -189,6 +190,7 @@ export default function Spieler() {
                           </td>
                           <td className="w-full px-2 sm:px-4 md:px-6">
                             <Link
+                              prefetch="intent"
                               to={`../spiel?nr=${m.nr}`}
                               className="inline-block w-full py-2.5 hover:text-accent-foreground hover:underline"
                             >

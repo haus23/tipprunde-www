@@ -1,17 +1,20 @@
 import { useMatches } from '@remix-run/react';
 
+type RouteHandle = {
+  viewPath: string;
+};
+
+function hasViewPath(handle: unknown): handle is RouteHandle {
+  return typeof handle === 'object' && handle !== null && 'viewPath' in handle;
+}
+
 export function useCurrentView() {
   const matches = useMatches();
 
-  const viewRouteMatch = matches.at(-1);
+  const handle = matches.at(-1)?.handle;
 
-  if (
-    viewRouteMatch &&
-    viewRouteMatch.handle &&
-    viewRouteMatch.handle.viewPath &&
-    typeof viewRouteMatch.handle.viewPath === 'string'
-  ) {
-    return viewRouteMatch.handle.viewPath;
+  if (hasViewPath(handle)) {
+    return handle.viewPath;
   }
 
   return '';

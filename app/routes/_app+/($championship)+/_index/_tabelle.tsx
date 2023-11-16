@@ -1,22 +1,23 @@
 import { CalendarDaysIcon } from '@heroicons/react/24/outline';
-import { json, type LoaderArgs, type V2_MetaFunction } from '@remix-run/node';
-import { Link, useLoaderData } from '@remix-run/react';
+import { json, type DataFunctionArgs, type MetaFunction } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
 import { Fragment } from 'react';
 import { fetchCurrentTips } from '~/backend/queries';
+import { Link } from '~/components/(ui)/atoms/link';
 import { InfoBox } from '~/components/(ui)/molecules/info-box';
 import { cn } from '~/utils';
 import { getChampionship } from '~/utils/route-match-helper';
 import { useChampionship } from '~/utils/use-championship';
 import { useChampionshipPlayers } from '~/utils/use-championship-players';
 
-export const meta: V2_MetaFunction = ({ matches, params }) => {
+export const meta: MetaFunction = ({ matches, params }) => {
   const championship = getChampionship(params.championship, matches);
   return [{ title: `Tabelle ${championship.name} - runde.tips` }];
 };
 
 export const handle = { viewPath: '' };
 
-export const loader = async ({ params }: LoaderArgs) => {
+export const loader = async ({ params }: DataFunctionArgs) => {
   return json(await fetchCurrentTips(params.championship));
 };
 
@@ -73,6 +74,7 @@ export default function Tabelle() {
                 <td className="pl-4 pr-2 text-right md:px-6">{currentRank}</td>
                 <td className="w-full px-2 py-2.5 md:px-6">
                   <Link
+                    prefetch="intent"
                     className="block hover:text-accent-foreground hover:underline"
                     to={`tipps/spieler?name=${p.playerId}`}
                   >

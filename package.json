@@ -11,7 +11,8 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "lint": "eslint app"
   },
   "dependencies": {
     "@haus23/tipprunde-types": "^0.12.3",
@@ -22,8 +23,8 @@
     "@radix-ui/react-popover": "^1.0.6",
     "@radix-ui/react-select": "^1.2.2",
     "@react-aria/interactions": "^3.15.1",
-    "@remix-run/node": "^1.18.1",
-    "@remix-run/react": "^1.18.1",
+    "@remix-run/node": "^2.2.0",
+    "@remix-run/react": "^2.2.0",
     "cmdk": "^0.2.0",
     "command-score": "^0.1.2",
     "isbot": "^3.6.12",
@@ -32,9 +33,9 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@remix-run/dev": "^1.18.1",
-    "@remix-run/eslint-config": "^1.18.1",
-    "@remix-run/serve": "^1.18.1",
+    "@remix-run/dev": "^2.2.0",
+    "@remix-run/eslint-config": "^2.2.0",
+    "@remix-run/serve": "^2.2.0",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "clsx": "^1.2.1",

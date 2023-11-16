@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link, NavLink, useLocation, useParams } from '@remix-run/react';
+import { useLocation, useParams } from '@remix-run/react';
 import * as Nav from '@radix-ui/react-navigation-menu';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -15,6 +15,8 @@ import { useChampionship } from '~/utils/use-championship';
 import { ChampionshipSelect } from '../commands/championship-select';
 import { Logo } from '../brand/logo';
 import { ThemeToggle } from '~/utils/color-theme';
+import { Link } from '../(ui)/atoms/link';
+import { NavLink } from '../(ui)/atoms/nav-link';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
