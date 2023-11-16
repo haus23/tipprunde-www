@@ -1,6 +1,39 @@
 # Changelog
 
 
+## v0.8.0
+
+[compare changes](https://github.com/haus23/tipprunde/compare/v0.7.0...v0.8.0)
+
+### 🚀 Enhancements
+
+- Use (unstable) viewTransitions. ([49917a3](https://github.com/haus23/tipprunde/commit/49917a3))
+- Use link prefetching. ([d747eff](https://github.com/haus23/tipprunde/commit/d747eff))
+
+### 🩹 Fixes
+
+- Do not embed svg. Best practice now. And add public log png. ([c4980f6](https://github.com/haus23/tipprunde/commit/c4980f6))
+- Do not crash with open matches. ([4aa92b4](https://github.com/haus23/tipprunde/commit/4aa92b4))
+- Clean reinstall of deps tree. ([aceade9](https://github.com/haus23/tipprunde/commit/aceade9))
+- Remove untouched entry files. ([46e8fbe](https://github.com/haus23/tipprunde/commit/46e8fbe))
+- Remove all shouldRevalidate implementations. Resolves #3 ([#3](https://github.com/haus23/tipprunde/issues/3))
+
+### 💅 Refactors
+
+- Rename symbols due to API break. ([628bd8d](https://github.com/haus23/tipprunde/commit/628bd8d))
+- Type metafunction data arg. ([0460454](https://github.com/haus23/tipprunde/commit/0460454))
+- Adapt matches type to the new meta function argument. ([8b58a7a](https://github.com/haus23/tipprunde/commit/8b58a7a))
+- Backport code from runde-tips. ([d2f6a2f](https://github.com/haus23/tipprunde/commit/d2f6a2f))
+- Remove obsolete flags. ([cc9ad63](https://github.com/haus23/tipprunde/commit/cc9ad63))
+
+### 🏡 Chore
+
+- Upgrade remix deps. ([013b559](https://github.com/haus23/tipprunde/commit/013b559))
+
+### ❤️ Contributors
+
+- Micha Buchholz ([@lean-dev](http://github.com/lean-dev))
+
 ## v0.7.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.6.0...v0.7.0)
