@@ -4,6 +4,7 @@
     "target": "ES2023",
     "useDefineForClassFields": true,
     "skipLibCheck": true,
+    "verbatimModuleSyntax": true,
 
     /* Bundler mode */
     "module": "Preserve",
@@ -19,6 +20,11 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* DX */
+    "paths": {
+      "#/*": ["./app/*"]
+    }
   }
 }
