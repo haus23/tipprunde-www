@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@haus23/tipprunde-types':
+        specifier: ^0.13.1
+        version: 0.13.1
       '@heroicons/react':
         specifier: ^2.2.0
         version: 2.2.0(react@19.0.0)
+      '@tanstack/react-query':
+        specifier: ^5.62.8
+        version: 5.62.8(react@19.0.0)
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -347,6 +353,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  '@haus23/tipprunde-types@0.13.1':
+    resolution: {integrity: sha512-n61hBhsMDjgwkTJxYTR2fGXgrLO9vXo78oljxsUbbgN6j5XfDVVjIL9wC8OKNLsnHfkqS84za/M0MDF1oGxX/Q==}
+    engines: {node: '>=16'}
+
   '@heroicons/react@2.2.0':
     resolution: {integrity: sha512-LMcepvRaS9LYHJGsF0zzmgKCUim/X3N/DQKc4jepAXJ7l8QxJ1PmxJzqplF2Z3FE4PqBAIGyJAQ/w4B5dsqbtQ==}
     peerDependencies:
@@ -484,6 +494,14 @@ packages:
     resolution: {integrity: sha512-+10CMg9vt1MoHj6x1pxyjPSMjHTIlqs8/tBztXvPAx24SKs9jwVnKqHJumlH/IzhaPUaj3T6T6wfZr8okdXaIg==}
     cpu: [x64]
     os: [win32]
+
+  '@tanstack/query-core@5.62.8':
+    resolution: {integrity: sha512-4fV31vDsUyvNGrKIOUNPrZztoyL187bThnoQOvAXEVlZbSiuPONpfx53634MKKdvsDir5NyOGm80ShFaoHS/mw==}
+
+  '@tanstack/react-query@5.62.8':
+    resolution: {integrity: sha512-8TUstKxF/fysHonZsWg/hnlDVgasTdHx6Q+f1/s/oPKJBJbKUWPZEHwLTMOZgrZuroLMiqYKJ9w69Abm8mWP0Q==}
+    peerDependencies:
+      react: ^18 || ^19
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -1334,6 +1352,10 @@ snapshots:
   '@esbuild/win32-x64@0.24.0':
     optional: true
 
+  '@haus23/tipprunde-types@0.13.1':
+    dependencies:
+      zod: 3.24.1
+
   '@heroicons/react@2.2.0(react@19.0.0)':
     dependencies:
       react: 19.0.0
@@ -1435,6 +1457,13 @@ snapshots:
 
   '@rollup/rollup-win32-x64-msvc@4.29.1':
     optional: true
+
+  '@tanstack/query-core@5.62.8': {}
+
+  '@tanstack/react-query@5.62.8(react@19.0.0)':
+    dependencies:
+      '@tanstack/query-core': 5.62.8
+      react: 19.0.0
 
   '@types/babel__core@7.20.5':
     dependencies:
