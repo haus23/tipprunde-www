@@ -1,16 +1,22 @@
-/* eslint-disable no-restricted-imports */
-import { Link as RemixLink, type LinkProps as RemixLinkProps } from '@remix-run/react';
-import { forwardRef } from 'react';
+import {
+  type LinkProps,
+  type NavLinkProps,
+  Link as RRLink,
+  NavLink as RRNavLink,
+} from 'react-router';
 
-interface LinkProps extends RemixLinkProps {}
+namespace Link {
+  export interface Props extends LinkProps {}
+}
 
-const Link = forwardRef<HTMLAnchorElement, LinkProps>(({ children, ...props }, ref) => {
-  return (
-    <RemixLink unstable_viewTransition {...props} ref={ref}>
-      {children}
-    </RemixLink>
-  );
-});
-Link.displayName = 'Link';
+export function Link({ ...props }: Link.Props) {
+  return <RRLink viewTransition {...props} />;
+}
 
-export { Link };
+namespace NavLink {
+  export interface Props extends NavLinkProps {}
+}
+
+export function NavLink({ ...props }: NavLink.Props) {
+  return <RRNavLink viewTransition {...props} />;
+}
