@@ -6,7 +6,7 @@ import type { layoutLoader } from '#/routes/_layout.data';
 
 export function useChampionship() {
   const { championshipId } = useParams();
-  const loaderData = useRouteLoaderData('layout') as LoaderType<
+  const loaderData = useRouteLoaderData('master') as LoaderType<
     typeof layoutLoader
   >;
 

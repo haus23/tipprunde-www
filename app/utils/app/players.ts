@@ -4,7 +4,7 @@ import { playersQuery } from '#/backend/queries';
 import type { layoutLoader } from '#/routes/_layout.data';
 
 export function usePlayers(championshipId: string) {
-  const loaderData = useRouteLoaderData('layout') as LoaderType<
+  const loaderData = useRouteLoaderData('master') as LoaderType<
     typeof layoutLoader
   >;
 

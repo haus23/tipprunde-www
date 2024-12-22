@@ -5,7 +5,7 @@ import { championshipsQuery } from '#/backend/queries';
 import type { layoutLoader } from '#/routes/_layout.data';
 
 export function useChampionships() {
-  const loaderData = useRouteLoaderData('layout') as LoaderType<
+  const loaderData = useRouteLoaderData('master') as LoaderType<
     typeof layoutLoader
   >;
 

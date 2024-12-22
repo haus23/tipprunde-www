@@ -31,7 +31,7 @@ const router = createBrowserRouter([
     path: ':championshipId?',
     loader: layoutLoader(queryClient),
     element: <Layout />,
-    id: 'layout',
+    id: 'master',
     hydrateFallbackElement: <Logo className="translate-y-[180px]" />,
     children: [
       {
