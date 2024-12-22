@@ -2,7 +2,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import * as Nav from '@radix-ui/react-navigation-menu';
 import { useEffect, useState } from 'react';
 import { VisuallyHidden } from 'react-aria';
-import { useLocation, useNavigation, useParams } from 'react-router';
+import { useLocation, useParams } from 'react-router';
 
 import { useChampionship } from '#/utils/app/championship';
 import { Button } from '../(ui)/atoms/button';
