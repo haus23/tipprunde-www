@@ -10,6 +10,7 @@ import Layout from './routes/_layout';
 import { layoutLoader } from './routes/_layout.data';
 import MatchesRoute from './routes/matches/_route';
 import PlayersRoute from './routes/players/_route';
+import { playersLoader } from './routes/players/_route.data';
 import TablesRoute from './routes/tables/_route';
 import { tablesLoader } from './routes/tables/_route.data';
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'spieler',
+        loader: playersLoader(queryClient),
         element: <PlayersRoute />,
         handle: { viewPath: 'spieler' },
       },
