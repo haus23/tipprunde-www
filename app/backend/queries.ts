@@ -24,7 +24,7 @@ export const championshipsQuery = () =>
     queryFn: fetchChampionships,
   });
 
-async function fetchChampionshipPlayers(championshipId: string) {
+async function fetchPlayers(championshipId: string) {
   console.log('Fetching championship players', championshipId);
   const response = await fetch(
     `${baseUrl}/championships/${championshipId}/players`,
@@ -35,7 +35,7 @@ async function fetchChampionshipPlayers(championshipId: string) {
 export const playersQuery = (championshipId: string) =>
   queryOptions({
     queryKey: ['players', championshipId],
-    queryFn: () => fetchChampionshipPlayers(championshipId),
+    queryFn: () => fetchPlayers(championshipId),
   });
 
 async function fetchCurrentTips(championshipId: string) {
