@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.9.3
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.2...v0.9.3)
+
+### 🚀 Enhancements
+
+- Add the championship select. ([5eb6fa7](https://github.com/haus23/tipprunde-www/commit/5eb6fa7))
+
+### 🩹 Fixes
+
+- Stay on championship with navigation. ([ede28bc](https://github.com/haus23/tipprunde-www/commit/ede28bc))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.2
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.1...v0.9.2)
