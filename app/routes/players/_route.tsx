@@ -9,8 +9,11 @@ export default function PlayersRoute() {
 
   const { playerId, tips } = useLoaderData<ReturnType<typeof playersLoader>>();
 
+  const player = players.find((p) => p.id === playerId) || players[0];
+
   return (
     <div>
+      <title>{`Tipps ${player.account.name} ${championship.name} - runde.tips`}</title>
       <h1>Spieler</h1>
     </div>
   );
