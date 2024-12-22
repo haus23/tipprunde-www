@@ -24,12 +24,19 @@ export const championshipsQuery = () =>
     queryFn: fetchChampionships,
   });
 
-export async function fetchChampionshipPlayers(championshipId?: string) {
+async function fetchChampionshipPlayers(championshipId: string) {
+  console.log('Fetching championship players', championshipId);
   const response = await fetch(
-    `${baseUrl}/championships/${championshipId ?? 'current'}/players`,
+    `${baseUrl}/championships/${championshipId}/players`,
   );
   return z.array(Player).parseAsync(await response.json());
 }
+
+export const playersQuery = (championshipId: string) =>
+  queryOptions({
+    queryKey: ['players', championshipId],
+    queryFn: () => fetchChampionshipPlayers(championshipId),
+  });
 
 export async function fetchCurrentTips(championshipId?: string) {
   const response = await fetch(

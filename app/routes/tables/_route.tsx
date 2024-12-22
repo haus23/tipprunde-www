@@ -1,7 +1,11 @@
+import { Link } from '#/components/(ui)/atoms/link';
 import { useChampionship } from '#/utils/app/championship';
+import { usePlayers } from '#/utils/app/players';
 
 export default function TablesRoute() {
   const championship = useChampionship();
+  const players = usePlayers(championship.id);
+
   return (
     <div>
       <header className="mx-2 flex items-center gap-x-2 pt-2 text-accent-foreground sm:mx-0 sm:gap-x-4">
@@ -13,6 +17,73 @@ export default function TablesRoute() {
           </span>
         </h1>
       </header>
+      <table className="mt-4 w-full text-sm">
+        <thead className="bg-accent-subtle text-xs uppercase text-accent-foreground">
+          <tr>
+            <th
+              scope="col"
+              className="py-3 pl-4 pr-2 text-right font-medium md:px-6"
+            >
+              Platz
+            </th>
+            <th scope="col" className="px-2 text-left font-medium md:px-6">
+              Name
+            </th>
+            {championship.extraPointsPublished && (
+              <th scope="col" className="px-2 text-center font-medium md:px-6 ">
+                <span className="hidden sm:inline">Zusatzpunkte</span>
+                <span className="sm:hidden">Zusatzpkt</span>
+              </th>
+            )}
+            <th
+              scope="col"
+              className="px-2 text-center font-medium last:pr-4 md:px-6"
+            >
+              <span className="hidden sm:inline">
+                {championship.extraPointsPublished ? 'Gesamtpunkte' : 'Punkte'}
+              </span>
+              <span className="sm:hidden">
+                {championship.extraPointsPublished ? 'Gesamt' : 'Punkte'}
+              </span>
+            </th>
+            {!championship.completed && (
+              <th>
+                <span className="sr-only">Aktuelle Spiele</span>
+              </th>
+            )}
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-neutral-hover font-semibold text-subtle-foreground">
+          {players.map((p, ix) => {
+            const currentRank =
+              ix === 0
+                ? '1.'
+                : p.rank !== players[ix - 1].rank
+                  ? `${p.rank}.`
+                  : '';
+            return (
+              <tr key={p.id}>
+                <td className="pl-4 pr-2 text-right md:px-6">{currentRank}</td>
+                <td className="w-full px-2 py-2.5 md:px-6">
+                  <Link
+                    prefetch="viewport"
+                    className="rounded-sm px-2 block hover:text-accent-foreground hover:underline"
+                    to={`spieler?name=${p.playerId}`}
+                  >
+                    {p.account.name}
+                  </Link>
+                </td>
+                {championship.extraPointsPublished && (
+                  <td className="px-2 text-center md:px-6">{p.extraPoints}</td>
+                )}
+                <td className="px-2 text-center last:pr-4 md:px-6">
+                  {p.totalPoints}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }

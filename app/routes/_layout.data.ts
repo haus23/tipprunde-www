@@ -1,11 +1,11 @@
 import type { QueryClient } from '@tanstack/react-query';
 import type { LoaderFunctionArgs } from 'react-router';
-import { championshipsQuery } from '#/backend/queries';
+import { championshipsQuery, playersQuery } from '#/backend/queries';
 
 export const layoutLoader =
   (queryClient: QueryClient) =>
   async ({ params }: LoaderFunctionArgs) => {
-    const { championshipId } = params;
+    let { championshipId } = params;
     const championships = await queryClient.ensureQueryData(
       championshipsQuery(),
     );
@@ -13,5 +13,11 @@ export const layoutLoader =
     if (championshipId && !championships.find((c) => c.id === championshipId))
       throw new Response('Not Found', { status: 404 });
 
-    return { championships };
+    if (!championshipId) championshipId = championships[0].id;
+
+    const players = await queryClient.ensureQueryData(
+      playersQuery(championshipId),
+    );
+
+    return { championships, players };
   };
