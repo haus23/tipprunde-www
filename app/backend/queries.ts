@@ -52,12 +52,19 @@ export const currentTipsQuery = (championshipId: string) =>
     queryFn: () => fetchCurrentTips(championshipId),
   });
 
-export async function fetchMatches(championshipId?: string) {
+async function fetchMatches(championshipId: string) {
+  console.log('Fetching championship matches', championshipId);
   const response = await fetch(
-    `${baseUrl}/championships/${championshipId ?? 'current'}/matches`,
+    `${baseUrl}/championships/${championshipId}/matches`,
   );
   return Matches.parseAsync(await response.json());
 }
+
+export const matchesQuery = (championshipId: string) =>
+  queryOptions({
+    queryKey: ['matches', championshipId],
+    queryFn: () => fetchMatches(championshipId),
+  });
 
 export async function fetchPlayerTips(
   accountId: string | null,

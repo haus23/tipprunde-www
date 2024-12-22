@@ -1,6 +1,10 @@
 import type { QueryClient } from '@tanstack/react-query';
 import type { LoaderFunctionArgs } from 'react-router';
-import { championshipsQuery, playersQuery } from '#/backend/queries';
+import {
+  championshipsQuery,
+  matchesQuery,
+  playersQuery,
+} from '#/backend/queries';
 
 export const layoutLoader =
   (queryClient: QueryClient) =>
@@ -19,5 +23,9 @@ export const layoutLoader =
       playersQuery(championshipId),
     );
 
-    return { championships, players };
+    const matches = await queryClient.ensureQueryData(
+      matchesQuery(championshipId),
+    );
+
+    return { championships, matches, players };
   };
