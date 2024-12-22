@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.9.2
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.1...v0.9.2)
+
+### 🚀 Enhancements
+
+- Recreate design. Implement consistent focus visible styling. ([f5d8b33](https://github.com/haus23/tipprunde-www/commit/f5d8b33))
+
+### 🩹 Fixes
+
+- Ensure data is present in the hook. ([1a97f60](https://github.com/haus23/tipprunde-www/commit/1a97f60))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.1
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.0...v0.9.1)
