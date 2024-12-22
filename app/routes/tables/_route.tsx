@@ -1,5 +1,8 @@
+import { CalendarDaysIcon } from '@heroicons/react/24/outline';
 import { useLoaderData } from 'react-router';
+import { Fragment } from 'react/jsx-runtime';
 import { Link } from '#/components/(ui)/atoms/link';
+import { InfoBox } from '#/components/(ui)/molecules/info-box';
 import { useChampionship } from '#/utils/app/championship';
 import { usePlayers } from '#/utils/app/players';
 import type { tablesLoader } from './_route.data';
@@ -9,7 +12,7 @@ export default function TablesRoute() {
   const players = usePlayers(championship.id);
 
   const { currentTips } = useLoaderData<ReturnType<typeof tablesLoader>>();
-  console.log(currentTips);
+
   return (
     <div>
       <header className="mx-2 flex items-center gap-x-2 pt-2 text-accent-foreground sm:mx-0 sm:gap-x-4">
@@ -83,6 +86,70 @@ export default function TablesRoute() {
                 <td className="px-2 text-center last:pr-4 md:px-6">
                   {p.totalPoints}
                 </td>
+                {!championship.completed && (
+                  <td>
+                    <div className="flex items-center pr-2">
+                      <InfoBox
+                        side="top"
+                        collisionPadding={8}
+                        icon={CalendarDaysIcon}
+                        ariaTriggerLabel={`Aktuelle Tips von ${p.account.name}`}
+                      >
+                        <div className="grid w-[240px] grid-cols-[1fr_repeat(2,_auto)] pb-2 text-sm font-normal">
+                          <div className="border-b border-line py-2 pl-2">
+                            Spiel
+                          </div>
+                          <div className="border-b border-line p-2 text-center">
+                            Tipp
+                          </div>
+                          <div className="border-b border-line p-2 text-center">
+                            Pkt
+                          </div>
+                          {currentTips.map((m) => {
+                            const tip = m.tips[p.id];
+                            return (
+                              <Fragment key={m.matchId}>
+                                <div
+                                  className={[
+                                    'py-1 pl-2',
+                                    (tip?.joker || tip?.lonelyHit) &&
+                                      'bg-primary',
+                                  ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                >
+                                  {m.hometeam}-{m.awayteam}
+                                </div>
+                                <div
+                                  className={[
+                                    'py-1 text-center',
+                                    (tip?.joker || tip?.lonelyHit) &&
+                                      'bg-primary',
+                                  ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                >
+                                  {tip?.tip}
+                                </div>
+                                <div
+                                  className={[
+                                    'py-1 text-center',
+                                    (tip?.joker || tip?.lonelyHit) &&
+                                      'bg-primary',
+                                  ]
+                                    .filter(Boolean)
+                                    .join(' ')}
+                                >
+                                  {m.result && tip?.points}
+                                </div>
+                              </Fragment>
+                            );
+                          })}
+                        </div>
+                      </InfoBox>
+                    </div>
+                  </td>
+                )}
               </tr>
             );
           })}
