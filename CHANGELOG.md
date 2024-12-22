@@ -1,6 +1,37 @@
 # Changelog
 
 
+## v0.9.0
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.8.0...v0.9.0)
+
+### 🚀 Enhancements
+
+- Add tailwind and theme. ([6e1537b](https://github.com/haus23/tipprunde-www/commit/6e1537b))
+- Show off simplified modernized component. ([2a05dcd](https://github.com/haus23/tipprunde-www/commit/2a05dcd))
+- Reimplement client-only theme system. ([ae75987](https://github.com/haus23/tipprunde-www/commit/ae75987))
+- Add routing. Way more simple. ([1e7ba32](https://github.com/haus23/tipprunde-www/commit/1e7ba32))
+- Use query to get current championship. Final POC. ([1e5b8c6](https://github.com/haus23/tipprunde-www/commit/1e5b8c6))
+
+### 🩹 Fixes
+
+- Eager prefetching. ([15dc923](https://github.com/haus23/tipprunde-www/commit/15dc923))
+
+### 💅 Refactors
+
+- Bring back data routing and adapt for react-query usage. ([53f1251](https://github.com/haus23/tipprunde-www/commit/53f1251))
+
+### 🏡 Chore
+
+- More specific versioning before the upgrade. ([34ecddb](https://github.com/haus23/tipprunde-www/commit/34ecddb))
+- Create empty react app. Fresh start. ([2acc7e1](https://github.com/haus23/tipprunde-www/commit/2acc7e1))
+- **dx:** Use biome and vscode for linting and formatting. ([1b12836](https://github.com/haus23/tipprunde-www/commit/1b12836))
+- Remove unused auth routes. ([e9779c9](https://github.com/haus23/tipprunde-www/commit/e9779c9))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.8.0
 
 [compare changes](https://github.com/haus23/tipprunde/compare/v0.7.0...v0.8.0)
