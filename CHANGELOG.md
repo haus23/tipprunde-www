@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.9.1
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.0...v0.9.1)
+
+### 🚀 Enhancements
+
+- Start recreating desktop nav. ([c29fb96](https://github.com/haus23/tipprunde-www/commit/c29fb96))
+
+### 💅 Refactors
+
+- Set title via React 19 title component. ([5893a82](https://github.com/haus23/tipprunde-www/commit/5893a82))
+
+### 🏡 Chore
+
+- **dx:** Ignore dev environment. ([71f106d](https://github.com/haus23/tipprunde-www/commit/71f106d))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.0
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.8.0...v0.9.0)
