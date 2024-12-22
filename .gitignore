@@ -3,3 +3,6 @@ node_modules/
 
 # Vite Build
 dist/
+
+# Dev Environment
+.env
