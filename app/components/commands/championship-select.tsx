@@ -1,26 +1,30 @@
-import { useEffect, useState } from 'react';
-import { CheckIcon, FolderIcon, MagnifyingGlassIcon } from '@heroicons/react/24/outline';
-import { useLocation, useNavigate } from '@remix-run/react';
-
+import {
+  CheckIcon,
+  FolderIcon,
+  MagnifyingGlassIcon,
+} from '@heroicons/react/24/outline';
 import { Command } from 'cmdk';
-import commandScore from 'command-score';
+import { useEffect, useState } from 'react';
+import { VisuallyHidden } from 'react-aria';
 
-import { Button } from '~/components/(ui)/atoms/button';
+import { useLocation, useNavigate } from 'react-router';
+import { useChampionship } from '#/utils/app/championship';
+import { useChampionships } from '#/utils/app/championships';
+import { useCurrentView } from '#/utils/app/current-view';
+import { Button } from '../(ui)/atoms/button';
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from '~/components/(ui)/molecules/dialog';
-import { cn } from '~/utils';
-import { useChampionship } from '~/utils/use-championship';
-import { useChampionships } from '~/utils/use-championships';
-import { useCurrentView } from '~/utils/use-current-view';
+} from '../(ui)/molecules/dialog';
 
 export function ChampionshipSelect() {
   const [isOpen, setIsOpen] = useState(false);
   const { search } = useLocation();
   const navigate = useNavigate();
+
   const championships = useChampionships();
   const championship = useChampionship();
   const viewSegment = useCurrentView();
@@ -36,53 +40,65 @@ export function ChampionshipSelect() {
     return () => document.removeEventListener('keydown', handleTriggerKey);
   }, []);
 
-  function filter(value: string, search: string) {
-    const c = championships.find((c) => c.id === value);
-    return commandScore(`${c?.name}${c?.id}`, search);
-  }
-
-  function handleSelect(championshipId: string) {
+  function handleSelect(selectedValue: string) {
+    const championshipId = selectedValue.slice(0, 6);
     setIsOpen(false);
-    const championshipSegment = championships[0].id === championshipId ? '' : championshipId;
+    const championshipSegment =
+      championships[0].id === championshipId ? '' : championshipId;
     navigate(
       {
         pathname: `/${[championshipSegment, viewSegment].filter(Boolean).join('/')}`,
         search,
       },
-      { unstable_viewTransition: true }
+      { viewTransition: true },
     );
   }
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button variant="toolbar" className="space-x-2" aria-label="Öffne Turnier-Auswahl Dialog">
+        <Button
+          variant="toolbar"
+          className="space-x-2"
+          aria-label="Öffne Turnier-Auswahl Dialog"
+        >
           <MagnifyingGlassIcon className="h-6" />
           <span className="hidden sm:block">Turnier</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="bottom-auto">
-        <DialogTitle className="sr-only">Turnierauswahl</DialogTitle>
-        <Command label="Turniersuchfeld" filter={filter}>
+        <VisuallyHidden>
+          <DialogTitle className="sr-only">Turnierauswahl</DialogTitle>
+        </VisuallyHidden>
+        <VisuallyHidden>
+          <DialogDescription>
+            Hier kann das Turnier gewechselt werden.
+          </DialogDescription>
+        </VisuallyHidden>
+        <Command label="Turnier-Suchfeld">
           <Command.Input
             placeholder="Turnier"
             className="w-full rounded-md border-0 bg-subtle px-6 py-2.5 font-semibold text-foreground placeholder:text-subtle-foreground focus:outline-none"
           />
           <Command.List className="border-t border-line p-2">
             <Command.Empty>
-              <div className="px-4 py-14 text-center text-subtle sm:px-14">
+              <div className="px-4 py-14 text-center text-subtle-foreground sm:px-14">
                 <FolderIcon className="mx-auto h-6 w-6" aria-hidden="true" />
-                <p className="mt-4 font-semibold">Kein Turnier passt zu der Suche.</p>
+                <p className="mt-4 font-semibold">
+                  Kein Turnier passt zu der Suche.
+                </p>
               </div>
             </Command.Empty>
             {championships.map((c) => (
               <Command.Item
                 key={c.id}
-                value={c.id}
-                className={cn(
+                value={c.id + c.name}
+                className={[
                   'flex cursor-default select-none items-center justify-between rounded-md px-4 py-2 font-semibold data-[selected=true]:bg-neutral-hover',
-                  championship.id === c.id && 'text-accent-subtle-foreground'
-                )}
+                  championship.id === c.id && 'text-accent-subtle-foreground',
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
                 onSelect={handleSelect}
               >
                 <span>{c.name}</span>

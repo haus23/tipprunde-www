@@ -36,14 +36,17 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <TablesRoute />,
+        handle: { viewPath: '' },
       },
       {
         path: 'spieler',
         element: <PlayersRoute />,
+        handle: { viewPath: 'spieler' },
       },
       {
         path: 'spiele',
         element: <MatchesRoute />,
+        handle: { viewPath: 'spiele' },
       },
     ],
   },

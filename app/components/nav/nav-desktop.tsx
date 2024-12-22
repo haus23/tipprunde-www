@@ -2,6 +2,7 @@ import * as Nav from '@radix-ui/react-navigation-menu';
 
 import { Link, NavLink } from '../(ui)/atoms/link';
 import { Logo } from '../brand/logo';
+import { ChampionshipSelect } from '../commands/championship-select';
 import { ThemeToggle } from './theme-toggle';
 
 const navItems = [
@@ -41,6 +42,7 @@ export function NavDesktop() {
         </Nav.List>
       </Nav.Root>
       <div className="flex gap-x-2">
+        <ChampionshipSelect />
         <ThemeToggle />
       </div>
     </div>
