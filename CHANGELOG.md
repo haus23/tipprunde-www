@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.9.5
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.4...v0.9.5)
+
+### 🚀 Enhancements
+
+- Implement basic table view. ([8016d90](https://github.com/haus23/tipprunde-www/commit/8016d90))
+- Implement loading current tips. ([ac1a41a](https://github.com/haus23/tipprunde-www/commit/ac1a41a))
+- Implement the current tips infoboxes. ([feef2f6](https://github.com/haus23/tipprunde-www/commit/feef2f6))
+
+### 🩹 Fixes
+
+- Remove unused import. ([30e77f3](https://github.com/haus23/tipprunde-www/commit/30e77f3))
+
+### 💅 Refactors
+
+- Hook is not app api releated. ([0a3ce93](https://github.com/haus23/tipprunde-www/commit/0a3ce93))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.4
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.3...v0.9.4)
