@@ -10,7 +10,7 @@ import { VisuallyHidden } from 'react-aria';
 import { useLocation, useNavigate } from 'react-router';
 import { useChampionship } from '#/utils/app/championship';
 import { useChampionships } from '#/utils/app/championships';
-import { useCurrentView } from '#/utils/app/current-view';
+import { useCurrentView } from '#/utils/current-view';
 import { Button } from '../(ui)/atoms/button';
 import {
   Dialog,
