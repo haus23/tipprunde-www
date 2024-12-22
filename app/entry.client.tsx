@@ -11,6 +11,7 @@ import { layoutLoader } from './routes/_layout.data';
 import MatchesRoute from './routes/matches/_route';
 import PlayersRoute from './routes/players/_route';
 import TablesRoute from './routes/tables/_route';
+import { tablesLoader } from './routes/tables/_route.data';
 
 import './styles/tailwind.css';
 
@@ -28,13 +29,14 @@ const queryClient = new QueryClient({
 const router = createBrowserRouter([
   {
     path: ':championshipId?',
+    loader: layoutLoader(queryClient),
     element: <Layout />,
     id: 'layout',
-    loader: layoutLoader(queryClient),
     hydrateFallbackElement: <Logo className="translate-y-[180px]" />,
     children: [
       {
         index: true,
+        loader: tablesLoader(queryClient),
         element: <TablesRoute />,
         handle: { viewPath: '' },
       },

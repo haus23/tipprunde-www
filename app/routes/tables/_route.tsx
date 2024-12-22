@@ -1,11 +1,15 @@
+import { useLoaderData } from 'react-router';
 import { Link } from '#/components/(ui)/atoms/link';
 import { useChampionship } from '#/utils/app/championship';
 import { usePlayers } from '#/utils/app/players';
+import type { tablesLoader } from './_route.data';
 
 export default function TablesRoute() {
   const championship = useChampionship();
   const players = usePlayers(championship.id);
 
+  const { currentTips } = useLoaderData<ReturnType<typeof tablesLoader>>();
+  console.log(currentTips);
   return (
     <div>
       <header className="mx-2 flex items-center gap-x-2 pt-2 text-accent-foreground sm:mx-0 sm:gap-x-4">
