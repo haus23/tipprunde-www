@@ -1,7 +1,10 @@
+import { useFocusRing } from 'react-aria';
 import { type VariantProps, tv } from 'tailwind-variants';
+import { focusRingStyles } from '../styles';
 
 const styles = tv({
-  base: 'inline-flex items-center justify-center font-medium focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background',
+  extend: focusRingStyles,
+  base: 'inline-flex items-center justify-center font-medium cursor-default',
   variants: {
     variant: {
       default: 'rounded-md',
@@ -25,5 +28,14 @@ namespace Button {
 }
 
 export function Button({ className, size, variant, ...props }: Button.Props) {
-  return <button className={styles({ className, size, variant })} {...props} />;
+  const { isFocusVisible, focusProps } = useFocusRing(props);
+
+  return (
+    <button
+      className={styles({ className, size, variant })}
+      {...props}
+      {...focusProps}
+      {...{ 'data-focus-visible': isFocusVisible || undefined }}
+    />
+  );
 }
