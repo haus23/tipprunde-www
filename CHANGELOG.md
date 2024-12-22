@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.9.4
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.3...v0.9.4)
+
+### 🚀 Enhancements
+
+- Re-implement the mobile nav. ([9adcc47](https://github.com/haus23/tipprunde-www/commit/9adcc47))
+
+### 🩹 Fixes
+
+- Radix primitive DialogClose relies on the click event being fired. ([77bd2ca](https://github.com/haus23/tipprunde-www/commit/77bd2ca))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.3
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.2...v0.9.3)
