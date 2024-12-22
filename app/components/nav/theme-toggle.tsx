@@ -2,11 +2,12 @@ import { MoonIcon, SunIcon } from '@heroicons/react/24/outline';
 import { useTheme } from '#/utils/theme';
 import { Button } from '../(ui)/atoms/button';
 
-export function ThemeToggle() {
+export function ThemeToggle(props: React.ComponentProps<'button'>) {
   const { theme, setColorScheme } = useTheme();
 
-  function handleToggle() {
+  function handleToggle(ev: React.MouseEvent<HTMLButtonElement>) {
     setColorScheme(theme.colorScheme === 'light' ? 'dark' : 'light');
+    props.onClick?.call(null, ev);
   }
 
   return (
