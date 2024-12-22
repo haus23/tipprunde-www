@@ -13,5 +13,5 @@ export const layoutLoader =
     if (championshipId && !championships.find((c) => c.id === championshipId))
       throw new Response('Not Found', { status: 404 });
 
-    return null;
+    return { championships };
   };
