@@ -1,38 +1,36 @@
-import { useEffect, useState } from 'react';
-import { useLocation, useParams } from '@remix-run/react';
-import * as Nav from '@radix-ui/react-navigation-menu';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
+import * as Nav from '@radix-ui/react-navigation-menu';
+import { useEffect, useState } from 'react';
+import { VisuallyHidden } from 'react-aria';
+import { useLocation, useNavigation, useParams } from 'react-router';
 
-import { Button } from '~/components/(ui)/atoms/button';
+import { useChampionship } from '#/utils/app/championship';
+import { Button } from '../(ui)/atoms/button';
+import { Link, NavLink } from '../(ui)/atoms/link';
 import {
   Dialog,
   DialogClose,
   DialogContent,
+  DialogDescription,
   DialogTitle,
   DialogTrigger,
-} from '~/components/(ui)/molecules/dialog';
-import { useChampionship } from '~/utils/use-championship';
-import { ChampionshipSelect } from '../commands/championship-select';
+} from '../(ui)/molecules/dialog';
 import { Logo } from '../brand/logo';
-import { ThemeToggle } from '~/utils/color-theme';
-import { Link } from '../(ui)/atoms/link';
-import { NavLink } from '../(ui)/atoms/nav-link';
+import { ChampionshipSelect } from '../commands/championship-select';
+import { ThemeToggle } from './theme-toggle';
 
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
-  { label: 'Spieler', viewSegment: 'tipps/spieler', end: false },
-  { label: 'Spiele', viewSegment: 'tipps/spiel', end: false },
+  { label: 'Spieler', viewSegment: 'spieler', end: false },
+  { label: 'Spiele', viewSegment: 'spiele', end: false },
 ];
 
 export function NavMobile() {
   const [open, setOpen] = useState(false);
-  const location = useLocation();
-  const { championship: championshipId } = useParams();
-  const championship = useChampionship();
+  const { championshipId } = useParams();
+  const { key } = useLocation();
 
-  useEffect(() => {
-    setOpen(false);
-  }, [location]);
+  const championship = useChampionship();
 
   useEffect(() => {
     function closeDialog(ev: MediaQueryListEvent) {
@@ -45,6 +43,10 @@ export function NavMobile() {
     return () => query.removeEventListener('change', closeDialog);
   }, []);
 
+  useEffect(() => {
+    setOpen(key === ''); // Useless, but need to treat the linter
+  }, [key]);
+
   return (
     <div className="flex h-16 items-center justify-between sm:hidden">
       <div className="flex items-center gap-x-2">
@@ -55,14 +57,19 @@ export function NavMobile() {
             </Button>
           </DialogTrigger>
           <DialogContent className="bottom-auto">
-            <DialogTitle className="sr-only">Turnierauswahl</DialogTitle>
+            <VisuallyHidden>
+              <DialogTitle>Hauptmenü</DialogTitle>
+            </VisuallyHidden>
+            <VisuallyHidden>
+              <DialogDescription>Das Hauptmenü der Webseite</DialogDescription>
+            </VisuallyHidden>
             <Nav.Root orientation="vertical">
               <Nav.List className="mb-2 flex flex-col font-medium">
                 <Nav.Item className="p-1">
                   <Nav.Link asChild>
                     <Link
                       to="/"
-                      className="m-1 inline-flex items-center rounded px-2 py-1 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                      className="m-1 inline-flex items-center rounded px-2 py-1"
                     >
                       <div className="flex items-center gap-x-2">
                         <Logo className="h-10 w-12" />
@@ -74,8 +81,8 @@ export function NavMobile() {
                 <Nav.Item>
                   <hr className="mb-2 border-line" />
                 </Nav.Item>
-                {navItems.map((item, ix) => (
-                  <Nav.Item key={ix} className="px-2">
+                {navItems.map((item) => (
+                  <Nav.Item key={item.label} className="px-2">
                     <Nav.Link
                       asChild
                       className="group my-1 block w-full rounded px-1 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
@@ -109,7 +116,9 @@ export function NavMobile() {
             </DialogClose>
           </DialogContent>
         </Dialog>
-        <h2 className="text-xl font-semibold text-accent-foreground">{championship.name}</h2>
+        <h2 className="text-xl font-semibold text-accent-foreground">
+          {championship.name}
+        </h2>
       </div>
       <ChampionshipSelect />
     </div>
