@@ -1,6 +1,31 @@
 # Changelog
 
 
+## v0.9.6
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.5...v0.9.6)
+
+### 🚀 Enhancements
+
+- Provide matches to all routes. ([cd68a2d](https://github.com/haus23/tipprunde-www/commit/cd68a2d))
+- Load tips per player. ([60c65b0](https://github.com/haus23/tipprunde-www/commit/60c65b0))
+- Set doc title ([f47379f](https://github.com/haus23/tipprunde-www/commit/f47379f))
+- Reimplemented simple ungrouped select with composition pattern. ([8069c3d](https://github.com/haus23/tipprunde-www/commit/8069c3d))
+
+### 🩹 Fixes
+
+- Remove the now migrated component. ([54e3f0b](https://github.com/haus23/tipprunde-www/commit/54e3f0b))
+- Remove the migrated layout aka loader. ([dc0f548](https://github.com/haus23/tipprunde-www/commit/dc0f548))
+
+### 💅 Refactors
+
+- Rename route. ([8fcc3a2](https://github.com/haus23/tipprunde-www/commit/8fcc3a2))
+- Align fetcher function name. ([a76e0fd](https://github.com/haus23/tipprunde-www/commit/a76e0fd))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.5
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.4...v0.9.5)
