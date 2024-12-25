@@ -1,51 +1,71 @@
-import { forwardRef } from 'react';
-import * as AccordionPrimitive from '@radix-ui/react-accordion';
-import { cn } from '~/utils';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { useFocusRing, useHover } from 'react-aria';
+import { tv } from 'tailwind-variants';
 
-const Accordion = AccordionPrimitive.Root;
+import { focusRingStyles } from '../styles';
 
-const AccordionItem = forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Item>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ ...props }, ref) => <AccordionPrimitive.Item ref={ref} {...props} />);
-AccordionItem.displayName = 'AccordionItem';
+export const Accordion = AccordionPrimitive.Root;
 
-const AccordionTrigger = forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
-    <AccordionPrimitive.Trigger
-      ref={ref}
-      className={cn(
-        'flex flex-1 items-center justify-between py-4 font-medium transition-all hover:underline [&[data-state=open]>svg]:rotate-180',
-        className
-      )}
-      {...props}
+const trigger = tv({
+  extend: focusRingStyles,
+  base: [
+    'group cursor-default',
+    'px-2 p-1 rounded-sm grow flex items-center justify-between font-medium transition-all',
+    'data-[focus-visible]:ring-offset-primary',
+  ],
+});
+
+export function AccordionTrigger({
+  className,
+  children,
+  ...props
+}: AccordionPrimitive.AccordionTriggerProps) {
+  const { focusProps, isFocusVisible } = useFocusRing(props);
+  const { hoverProps, isHovered } = useHover({});
+
+  return (
+    <AccordionPrimitive.Header
+      className="flex p-1 bg-primary rounded data-[hovered]:bg-primary-hover"
+      {...hoverProps}
+      {...{ 'data-hovered': isHovered || undefined }}
     >
+      <AccordionPrimitive.Trigger
+        className={trigger({ className })}
+        {...props}
+        {...focusProps}
+        {...{ 'data-focus-visible': isFocusVisible || undefined }}
+      >
+        {children}
+        <ChevronDownIcon className="h-5 transition-transform duration-150 group-data-[state=open]:rotate-180" />
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+  );
+}
+
+const item = tv({
+  base: 'pt-1',
+});
+
+export function AccordionItem({
+  className,
+  ...props
+}: AccordionPrimitive.AccordionItemProps) {
+  return <AccordionPrimitive.Item className={item({ className })} {...props} />;
+}
+
+const content = tv({
+  base: 'data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden',
+});
+
+export function AccordionContent({
+  className,
+  children,
+  ...props
+}: AccordionPrimitive.AccordionContentProps) {
+  return (
+    <AccordionPrimitive.Content className={content({ className })} {...props}>
       {children}
-      <ChevronDownIcon className="h-5 transition-transform duration-200" />
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
-));
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
-
-const AccordionContent = forwardRef<
-  React.ElementRef<typeof AccordionPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Content>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Content
-    ref={ref}
-    className={cn(
-      'data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden text-sm transition-all',
-      className
-    )}
-    {...props}
-  >
-    <div className="pb-4 pt-0">{children}</div>
-  </AccordionPrimitive.Content>
-));
-AccordionContent.displayName = AccordionPrimitive.Content.displayName;
-
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
+    </AccordionPrimitive.Content>
+  );
+}
