@@ -70,7 +70,7 @@ export default function PlayersRoute() {
 
   return (
     <div>
-      <title>{`Tipps ${player.account.name} ${championship.name} - runde.tips`}</title>
+      <title>{`Tipps ${player.account.name} - ${championship.name} - runde.tips`}</title>
       <header className="sticky top-0 z-10 mx-2 flex items-center gap-x-4 bg-background pb-2 pt-1 text-accent-foreground sm:mx-0 sm:gap-x-4">
         <h2 className="flex gap-x-2 text-xl font-semibold tracking-tight">
           <span className="hidden py-1 sm:block">{championship.name} -</span>
