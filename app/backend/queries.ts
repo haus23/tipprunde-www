@@ -67,7 +67,7 @@ export const matchesQuery = (championshipId: string) =>
   });
 
 async function fetchPlayerTips(championshipId: string, accountId: string) {
-  console.log('Fetching tips', championshipId, accountId);
+  console.log('Fetching player tips', championshipId, accountId);
   const query = `?name=${accountId}`;
 
   const url = `${baseUrl}/championships/${championshipId}/player-tips${query}`;
@@ -81,17 +81,17 @@ export const playerTipsQuery = (championshipId: string, accountId: string) =>
     queryFn: () => fetchPlayerTips(championshipId, accountId),
   });
 
-export async function fetchMatchTips(
-  nr: string | null,
-  championshipId: string | undefined,
-) {
+async function fetchMatchTips(championshipId: string, nr: string | null) {
+  console.log('Fetching match tips', championshipId, nr);
   const query = nr ? `?nr=${nr}` : '';
 
-  const url = `${baseUrl}/championships/${championshipId ?? 'current'}/match-tips${query}`;
+  const url = `${baseUrl}/championships/${championshipId}/match-tips${query}`;
   const response = await fetch(url);
-  if (response.status === 404) {
-    throw response;
-  }
-
   return MatchTips.parseAsync(await response.json());
 }
+
+export const matchTipsQuery = (championshipId: string, nr: string | null) =>
+  queryOptions({
+    queryKey: ['match-tips', championshipId, nr],
+    queryFn: () => fetchMatchTips(championshipId, nr),
+  });

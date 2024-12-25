@@ -15,6 +15,7 @@ import TablesRoute from './routes/tables/_route';
 import { tablesLoader } from './routes/tables/_route.data';
 
 import './styles/tailwind.css';
+import { matchesLoader } from './routes/matches/_route.data';
 
 const container = document.getElementById('root');
 if (!container) throw Error('Missing root element!');
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
       },
       {
         path: 'spiel',
+        loader: matchesLoader(queryClient),
         element: <MatchesRoute />,
         handle: { viewPath: 'spiel' },
       },
