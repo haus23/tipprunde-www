@@ -7,6 +7,7 @@ import {
   SelectValue,
 } from '#/components/(ui)/elements/select';
 import { useChampionship } from '#/utils/app/championship';
+import { useMatches } from '#/utils/app/matches';
 import { usePlayers } from '#/utils/app/players';
 import type { playersLoader } from './_route.data';
 
@@ -14,10 +15,12 @@ export default function PlayersRoute() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const championship = useChampionship();
+
+  const { matches, teams, rounds } = useMatches(championship.id);
+  const playedMatches = matches.filter((m) => m.result).length;
+
   const players = usePlayers(championship.id);
-
   const { playerId, tips } = useLoaderData<ReturnType<typeof playersLoader>>();
-
   const player = players.find((p) => p.id === playerId) || players[0];
 
   function handleSelect(id: string) {
@@ -46,6 +49,30 @@ export default function PlayersRoute() {
           </SelectContent>
         </Select>
       </header>
+      <div className="mx-2 mt-6 max-w-3xl text-sm md:mx-auto">
+        <div className="flex w-full justify-between">
+          <div className="space-y-1">
+            <p className="text-xs font-medium uppercase">Platz</p>
+            <p className="brand-app-text-contrast text-center font-semibold">{`${player.rank}.`}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="px-4 text-xs font-medium uppercase">Spiele</p>
+            <p className="brand-app-text-contrast text-center font-semibold">{`${playedMatches} (${matches.length})`}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-xs font-medium uppercase">Punkte</p>
+            <p className="brand-app-text-contrast text-center font-semibold">
+              {player.points}
+            </p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-xs font-medium uppercase">Schnitt</p>
+            <p className="brand-app-text-contrast text-center font-semibold">{`${
+              playedMatches ? (player.points / playedMatches).toFixed(2) : ''
+            }`}</p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
