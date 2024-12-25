@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.9.8
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.7...v0.9.8)
+
+### 🚀 Enhancements
+
+- Load route data. ([8854e10](https://github.com/haus23/tipprunde-www/commit/8854e10))
+- Add grouping. ([7e8f663](https://github.com/haus23/tipprunde-www/commit/7e8f663))
+- Implement matches view header. ([9f5fbd4](https://github.com/haus23/tipprunde-www/commit/9f5fbd4))
+- Update title meta. ([29a9650](https://github.com/haus23/tipprunde-www/commit/29a9650))
+
+### 💅 Refactors
+
+- Simplify select component. ([7ff22b5](https://github.com/haus23/tipprunde-www/commit/7ff22b5))
+- Remove unused matches (router) helper. ([b656050](https://github.com/haus23/tipprunde-www/commit/b656050))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.7
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.6...v0.9.7)
