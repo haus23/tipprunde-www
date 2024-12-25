@@ -71,14 +71,16 @@ export default function TablesRoute() {
             return (
               <tr key={p.id}>
                 <td className="pl-4 pr-2 text-right md:px-6">{currentRank}</td>
-                <td className="w-full px-2 py-2.5 md:px-6">
-                  <Link
-                    prefetch="viewport"
-                    className="rounded-sm px-2 block hover:text-accent-foreground hover:underline"
-                    to={`spieler?name=${p.playerId}`}
-                  >
-                    {p.account.name}
-                  </Link>
+                <td className="w-full px-2 md:px-6">
+                  <div className="py-1.5">
+                    <Link
+                      prefetch="viewport"
+                      className="rounded-sm p-1 block hover:text-accent-foreground hover:underline"
+                      to={`spieler?name=${p.playerId}`}
+                    >
+                      {p.account.name}
+                    </Link>
+                  </div>
                 </td>
                 {championship.extraPointsPublished && (
                   <td className="px-2 text-center md:px-6">{p.extraPoints}</td>
