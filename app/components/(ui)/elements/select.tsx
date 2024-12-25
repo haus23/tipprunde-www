@@ -34,23 +34,14 @@ const item = tv({
   ],
 });
 
-namespace Select {
-  export interface Props extends SelectPrimitive.SelectProps {}
-}
-
-export function Select({ ...props }: Select.Props) {
-  return <SelectPrimitive.Root {...props} />;
-}
-
-namespace SelectTrigger {
-  export interface Props extends SelectPrimitive.SelectTriggerProps {}
-}
+export const Select = SelectPrimitive.Select;
+export const SelectValue = SelectPrimitive.Value;
 
 export function SelectTrigger({
   children,
   className,
   ...props
-}: SelectTrigger.Props) {
+}: SelectPrimitive.SelectTriggerProps) {
   const { isFocusVisible, focusProps } = useFocusRing(props);
   const { hoverProps, isHovered } = useHover({});
 
@@ -71,23 +62,11 @@ export function SelectTrigger({
   );
 }
 
-namespace SelectValue {
-  export interface Props extends SelectPrimitive.SelectValueProps {}
-}
-
-export function SelectValue(props: SelectValue.Props) {
-  return <SelectPrimitive.Value {...props} />;
-}
-
-namespace SelectContent {
-  export interface Props extends SelectPrimitive.SelectContentProps {}
-}
-
 export function SelectContent({
   children,
   className,
   ...props
-}: SelectContent.Props) {
+}: SelectPrimitive.SelectContentProps) {
   return (
     <SelectPrimitive.Portal>
       <SelectPrimitive.Content
@@ -109,15 +88,11 @@ export function SelectContent({
   );
 }
 
-namespace SelectItem {
-  export interface Props extends SelectPrimitive.SelectItemProps {}
-}
-
 export function SelectItem({
   children,
   className,
   ...props
-}: SelectItem.Props) {
+}: SelectPrimitive.SelectItemProps) {
   const { isFocusVisible, focusProps } = useFocusRing(props);
 
   return (
