@@ -48,9 +48,9 @@ const router = createBrowserRouter([
         handle: { viewPath: 'spieler' },
       },
       {
-        path: 'spiele',
+        path: 'spiel',
         element: <MatchesRoute />,
-        handle: { viewPath: 'spiele' },
+        handle: { viewPath: 'spiel' },
       },
     ],
   },

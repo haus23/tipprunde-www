@@ -9,7 +9,7 @@ import { ThemeToggle } from './theme-toggle';
 const navItems = [
   { label: 'Tabelle', viewSegment: '', end: true },
   { label: 'Spieler', viewSegment: 'spieler', end: false },
-  { label: 'Spiele', viewSegment: 'spiele', end: false },
+  { label: 'Spiele', viewSegment: 'spiel', end: false },
 ];
 
 export function NavDesktop() {
