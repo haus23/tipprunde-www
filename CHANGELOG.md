@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v0.9.7
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.6...v0.9.7)
+
+### 🚀 Enhancements
+
+- Add stats bar. ([d355472](https://github.com/haus23/tipprunde-www/commit/d355472))
+- Reimplement the accordion. ([ebf9642](https://github.com/haus23/tipprunde-www/commit/ebf9642))
+- Add refactored players view. ([a4f1976](https://github.com/haus23/tipprunde-www/commit/a4f1976))
+
+### 🩹 Fixes
+
+- Align link outlining. ([054e031](https://github.com/haus23/tipprunde-www/commit/054e031))
+
+### 💅 Refactors
+
+- Remove now unused tip-views layout. ([df0d3b1](https://github.com/haus23/tipprunde-www/commit/df0d3b1))
+- Add date format helper. Remove unused invariant helper. ([164bbfe](https://github.com/haus23/tipprunde-www/commit/164bbfe))
+- Change route path. ([8973636](https://github.com/haus23/tipprunde-www/commit/8973636))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.6
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.5...v0.9.6)
