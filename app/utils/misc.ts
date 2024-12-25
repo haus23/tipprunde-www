@@ -1,17 +1,30 @@
 /**
- * Provide a condition and if that condition is falsy, throws an error
- * with the given message.
+ * Formats a date value
  *
- * @param condition The condition to check
- * @param message The optional message to throw
- *
- * @throws {Error} if condition is falsy
+ * @param dateStr Date value as string
+ * @param options Determine short date format options
+ * @returns Formatted date
  */
-export function invariant(
-  condition: unknown,
-  message?: string,
-): asserts condition {
-  if (!condition) {
-    throw new Error(message || 'Unexpected falsy invariant assertion');
+export function formatDate(
+  dateStr: string,
+  options?: { short?: boolean; shortIfCurrent?: boolean },
+) {
+  let { short, shortIfCurrent } = options || {
+    short: false,
+    shortIfCurrent: false,
+  };
+
+  if (!dateStr) return '';
+
+  const date = new Date(dateStr);
+
+  if (shortIfCurrent && new Date().getFullYear() === date.getFullYear()) {
+    short = true;
   }
+
+  return date.toLocaleDateString('de-DE', {
+    day: '2-digit',
+    month: '2-digit',
+    year: short ? undefined : '2-digit',
+  });
 }
