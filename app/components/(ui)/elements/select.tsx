@@ -36,6 +36,7 @@ const item = tv({
 
 export const Select = SelectPrimitive.Select;
 export const SelectValue = SelectPrimitive.Value;
+export const SelectGroup = SelectPrimitive.Group;
 
 export function SelectTrigger({
   children,
@@ -110,5 +111,13 @@ export function SelectItem({
   );
 }
 
-export function SelectLabel() {}
-export function SelectGroup() {}
+const label = tv({
+  base: 'text-sm text-subtle-foreground',
+});
+
+export function SelectLabel({
+  className,
+  ...props
+}: SelectPrimitive.SelectLabelProps) {
+  return <SelectPrimitive.Label className={label({ className })} {...props} />;
+}
