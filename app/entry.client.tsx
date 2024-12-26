@@ -15,6 +15,7 @@ import TablesRoute from './routes/tables/_route';
 import { tablesLoader } from './routes/tables/_route.data';
 
 import './styles/tailwind.css';
+import { ErrorBoundary } from './routes/_error';
 import { matchesLoader } from './routes/matches/_route.data';
 
 const container = document.getElementById('root');
@@ -30,10 +31,11 @@ const queryClient = new QueryClient({
 
 const router = createBrowserRouter([
   {
+    id: 'master',
     path: ':championshipId?',
     loader: layoutLoader(queryClient),
     element: <Layout />,
-    id: 'master',
+    errorElement: <ErrorBoundary />,
     hydrateFallbackElement: <Logo className="translate-y-[180px]" />,
     children: [
       {
