@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.9.9
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.8...v0.9.9)
+
+### 🚀 Enhancements
+
+- Display tips table. ([c6c7611](https://github.com/haus23/tipprunde-www/commit/c6c7611))
+
+### 🩹 Fixes
+
+- Align column header outlining. ([34faba2](https://github.com/haus23/tipprunde-www/commit/34faba2))
+- All focus visible styling is aligned. ([b4db4ce](https://github.com/haus23/tipprunde-www/commit/b4db4ce))
+
+### 💅 Refactors
+
+- Remove remaining remix traces. ([0c01279](https://github.com/haus23/tipprunde-www/commit/0c01279))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.8
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.7...v0.9.8)
