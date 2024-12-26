@@ -2,9 +2,9 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import * as Nav from '@radix-ui/react-navigation-menu';
 import { useEffect, useState } from 'react';
 import { VisuallyHidden } from 'react-aria';
-import { useLocation, useParams } from 'react-router';
+import { useLocation } from 'react-router';
 
-import { useChampionship } from '#/utils/app/championship';
+import { useOptionalChampionship } from '#/utils/app/championship';
 import { Button } from '../(ui)/atoms/button';
 import { Link, NavLink } from '../(ui)/atoms/link';
 import {
@@ -27,10 +27,9 @@ const navItems = [
 
 export function NavMobile() {
   const [open, setOpen] = useState(false);
-  const { championshipId } = useParams();
   const { key } = useLocation();
 
-  const championship = useChampionship();
+  const championship = useOptionalChampionship();
 
   useEffect(() => {
     function closeDialog(ev: MediaQueryListEvent) {
@@ -88,7 +87,7 @@ export function NavMobile() {
                       className="group my-1 block w-full rounded px-1 ring-offset-background focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
                     >
                       <NavLink
-                        to={`/${[championshipId, item.viewSegment].filter(Boolean).join('/')}`}
+                        to={`/${[championship?.id, item.viewSegment].filter(Boolean).join('/')}`}
                         end={item.end}
                       >
                         <span className="block border-l-4 border-transparent px-4 py-2 group-hover:border-line-hover group-aria-[current=page]:border-primary-line-hover">
@@ -117,7 +116,7 @@ export function NavMobile() {
           </DialogContent>
         </Dialog>
         <h2 className="text-xl font-semibold text-accent-foreground">
-          {championship.name}
+          {championship?.name || 'runde.tips'}
         </h2>
       </div>
       <ChampionshipSelect />

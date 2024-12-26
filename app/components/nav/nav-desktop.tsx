@@ -1,6 +1,6 @@
 import * as Nav from '@radix-ui/react-navigation-menu';
-import { useParams } from 'react-router';
 
+import { useOptionalChampionship } from '#/utils/app/championship';
 import { Link, NavLink } from '../(ui)/atoms/link';
 import { Logo } from '../brand/logo';
 import { ChampionshipSelect } from '../commands/championship-select';
@@ -13,7 +13,7 @@ const navItems = [
 ];
 
 export function NavDesktop() {
-  const { championshipId } = useParams();
+  const championship = useOptionalChampionship();
 
   return (
     <div className="hidden items-center justify-between sm:flex">
@@ -34,7 +34,7 @@ export function NavDesktop() {
               className="flex items-center relative px-2 pt-1 mx-1"
             >
               <NavLink
-                to={`/${[championshipId, item.viewSegment].filter(Boolean).join('/')}`}
+                to={`/${[championship?.id, item.viewSegment].filter(Boolean).join('/')}`}
                 end={item.end}
                 className="p-2 rounded-md data-[hovered]:bg-neutral-hover after:border-b-2 after:border-transparent after:block after:absolute after:w-full after:bottom-0 after:left-0 aria-[current]:after:!border-primary-line-hover data-[hovered]:after:border-line-hover"
               >

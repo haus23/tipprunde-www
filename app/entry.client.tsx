@@ -6,7 +6,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router';
 import { Logo } from './components/brand/logo';
 import { ThemeProvider } from './utils/theme';
 
-import { ErrorBoundary } from './routes/_error';
+import { ErrorBoundary, NotFoundBoundary } from './routes/_error';
 import Layout from './routes/_layout';
 import { layoutLoader } from './routes/_layout.data';
 import { rootLoader } from './routes/_root.data';
@@ -42,6 +42,7 @@ const router = createBrowserRouter([
         id: 'master',
         path: ':championshipId?',
         loader: layoutLoader(queryClient),
+        errorElement: <NotFoundBoundary />,
         children: [
           {
             index: true,
