@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.10.0
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.9...v0.10.0)
+
+### 🚀 Enhancements
+
+- Add a root error boundary. ([aff9fec](https://github.com/haus23/tipprunde-www/commit/aff9fec))
+- Add not found error boundary. ([cb6ff67](https://github.com/haus23/tipprunde-www/commit/cb6ff67))
+
+### 🩹 Fixes
+
+- Remove unused images. ([a1f1b20](https://github.com/haus23/tipprunde-www/commit/a1f1b20))
+
+### 💅 Refactors
+
+- Add consistent championship validation. ([91c5744](https://github.com/haus23/tipprunde-www/commit/91c5744))
+- Create a new root route. ([eb4a2c4](https://github.com/haus23/tipprunde-www/commit/eb4a2c4))
+
+### 🏡 Chore
+
+- **dx:** Update release stopper issues. ([556e9a1](https://github.com/haus23/tipprunde-www/commit/556e9a1))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.9.9
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.8...v0.9.9)
