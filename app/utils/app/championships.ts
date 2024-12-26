@@ -2,11 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import { useRouteLoaderData } from 'react-router';
 
 import { championshipsQuery } from '#/backend/queries';
-import type { layoutLoader } from '#/routes/_layout.data';
+import type { rootLoader } from '#/routes/_root.data';
 
 export function useChampionships() {
-  const loaderData = useRouteLoaderData('master') as LoaderType<
-    typeof layoutLoader
+  const loaderData = useRouteLoaderData('root') as LoaderType<
+    typeof rootLoader
   >;
 
   const { data } = useQuery({

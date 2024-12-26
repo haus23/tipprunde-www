@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 import { VisuallyHidden } from 'react-aria';
 
 import { useLocation, useNavigate } from 'react-router';
-import { useChampionship } from '#/utils/app/championship';
+import { useOptionalChampionship } from '#/utils/app/championship';
 import { useChampionships } from '#/utils/app/championships';
 import { useCurrentView } from '#/utils/current-view';
 import { Button } from '../(ui)/atoms/button';
@@ -26,7 +26,7 @@ export function ChampionshipSelect() {
   const navigate = useNavigate();
 
   const championships = useChampionships();
-  const championship = useChampionship();
+  const championship = useOptionalChampionship();
   const viewSegment = useCurrentView();
 
   useEffect(() => {
@@ -95,14 +95,14 @@ export function ChampionshipSelect() {
                 value={c.id + c.name}
                 className={[
                   'flex cursor-default select-none items-center justify-between rounded-md px-4 py-2 font-semibold data-[selected=true]:bg-neutral-hover',
-                  championship.id === c.id && 'text-accent-subtle-foreground',
+                  championship?.id === c.id && 'text-accent-subtle-foreground',
                 ]
                   .filter(Boolean)
                   .join(' ')}
                 onSelect={handleSelect}
               >
                 <span>{c.name}</span>
-                {championship.id === c.id && <CheckIcon className="h-6" />}
+                {championship?.id === c.id && <CheckIcon className="h-6" />}
               </Command.Item>
             ))}
           </Command.List>

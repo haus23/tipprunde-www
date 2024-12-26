@@ -24,5 +24,5 @@ export const layoutLoader =
       matchesQuery(championship.id),
     );
 
-    return { championships, matches, players };
+    return { matches, players };
   };
