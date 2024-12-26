@@ -4,6 +4,8 @@ import {
   ArrowUpIcon,
   ChevronUpDownIcon,
 } from '@heroicons/react/24/outline';
+
+import { Button } from '#/components/(ui)/atoms/button';
 import { Link } from '#/components/(ui)/atoms/link';
 import { InfoBox } from '#/components/(ui)/molecules/info-box';
 import { useTipSorting } from '#/utils/app/tip-sorting';
@@ -26,63 +28,63 @@ export function TipsTable({
             scope="col"
             className="w-full px-2 py-3 text-left font-medium sm:px-4 md:px-6"
           >
-            <button
+            <Button
               type="button"
-              className="relative"
+              className="relative p-1 pr-4 rounded-sm"
               aria-label="Sortierung ändern"
               onClick={() => toggleSort('name')}
             >
-              <span className="pr-4 uppercase">Spieler</span>
+              <span className="uppercase">Spieler</span>
               {column !== 'name' || order === 'none' ? (
-                <ChevronUpDownIcon className="absolute right-0 top-0 h-4" />
+                <ChevronUpDownIcon className="absolute right-0 size-4" />
               ) : order === 'descending' ? (
-                <ArrowDownIcon className="absolute right-[2px] top-[2px] h-3" />
+                <ArrowDownIcon className="absolute right-0.5 size-3" />
               ) : (
-                <ArrowUpIcon className="absolute right-[2px] top-[2px] h-3" />
+                <ArrowUpIcon className="absolute right-0.5 size-3" />
               )}
-            </button>
+            </Button>
           </th>
           <th
             aria-sort={column === 'tip' ? order : 'none'}
             scope="col"
             className="px-2 text-center font-medium sm:px-4 md:px-6"
           >
-            <button
+            <Button
               type="button"
-              className="relative"
+              className="relative p-1 pr-4 rounded-sm"
               aria-label="Sortierung ändern"
               onClick={() => toggleSort('tip')}
             >
-              <span className="pr-4 uppercase">Tip</span>
+              <span className="uppercase">Tipp</span>
               {column !== 'tip' || order === 'none' ? (
-                <ChevronUpDownIcon className="absolute right-0 top-0 h-4" />
+                <ChevronUpDownIcon className="absolute right-0 size-4" />
               ) : order === 'descending' ? (
-                <ArrowDownIcon className="absolute right-[2px] top-[2px] h-3" />
+                <ArrowDownIcon className="absolute right-0.5 size-3" />
               ) : (
-                <ArrowUpIcon className="absolute right-[2px] top-[2px] h-3" />
+                <ArrowUpIcon className="absolute right-0.5 size-3" />
               )}
-            </button>
+            </Button>
           </th>
           <th
             aria-sort={column === 'points' ? order : 'none'}
             scope="col"
             className="px-2 text-center font-medium sm:px-4 md:px-6"
           >
-            <button
+            <Button
               type="button"
-              className="relative"
+              className="relative p-1 pr-4 rounded-sm"
               aria-label="Sortierung ändern"
               onClick={() => toggleSort('points')}
             >
-              <span className="pr-4 uppercase">Punkte</span>
+              <span className="uppercase">Punkte</span>
               {column !== 'points' || order === 'none' ? (
-                <ChevronUpDownIcon className="absolute right-0 top-0 h-4" />
+                <ChevronUpDownIcon className="absolute right-0 size-4" />
               ) : order === 'descending' ? (
-                <ArrowDownIcon className="absolute right-[2px] top-[2px] h-3" />
+                <ArrowDownIcon className="absolute right-0.5 size-3" />
               ) : (
-                <ArrowUpIcon className="absolute right-[2px] top-[2px] h-3" />
+                <ArrowUpIcon className="absolute right-0.5 size-3" />
               )}
-            </button>
+            </Button>
           </th>
         </tr>
       </thead>
