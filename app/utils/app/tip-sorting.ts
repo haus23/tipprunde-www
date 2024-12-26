@@ -10,10 +10,9 @@ type Sort = { column?: SortColumn; order: SortOrder };
 function orderingReducer(state: Sort, column: SortColumn): Sort {
   if (column !== state.column) {
     return { column, order: 'descending' };
-  } else {
-    const ix = sortOrderValues.indexOf(state.order);
-    return { column, order: sortOrderValues[(ix + 1) % 3] };
   }
+  const ix = sortOrderValues.indexOf(state.order);
+  return { column, order: sortOrderValues[(ix + 1) % 3] };
 }
 
 function compareTip(a: Tip, b: Tip) {
@@ -40,23 +39,25 @@ export function useTipSorting() {
           return a.tip === b.tip // both undefined
             ? 0
             : typeof a.tip === 'undefined'
-            ? 1
-            : typeof b.tip === 'undefined'
-            ? -1
-            : (a.tip.points - b.tip.points) * (sort.order === 'ascending' ? 1 : -1);
+              ? 1
+              : typeof b.tip === 'undefined'
+                ? -1
+                : (a.tip.points - b.tip.points) *
+                  (sort.order === 'ascending' ? 1 : -1);
         case 'tip':
           return a.tip === b.tip // both undefined
             ? 0
             : typeof a.tip === 'undefined'
-            ? 1
-            : typeof b.tip === 'undefined'
-            ? -1
-            : compareTip(a.tip, b.tip) * (sort.order === 'ascending' ? 1 : -1);
+              ? 1
+              : typeof b.tip === 'undefined'
+                ? -1
+                : compareTip(a.tip, b.tip) *
+                  (sort.order === 'ascending' ? 1 : -1);
         default:
           return 0;
       }
     },
-    [sort]
+    [sort],
   );
 
   return {

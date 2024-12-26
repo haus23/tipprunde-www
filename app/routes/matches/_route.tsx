@@ -12,6 +12,7 @@ import {
 import { InfoBox } from '#/components/(ui)/molecules/info-box';
 import { useChampionship } from '#/utils/app/championship';
 import { useMatches } from '#/utils/app/matches';
+import { usePlayers } from '#/utils/app/players';
 import { formatDate } from '#/utils/misc';
 import type { matchesLoader } from './_route.data';
 import { TipsTable } from './tips-table';
@@ -20,6 +21,7 @@ export default function MatchesRoute() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const championship = useChampionship();
+  const players = usePlayers(championship.id);
   const { leagues, matches, rounds, teams } = useMatches(championship.id);
 
   const { matchId, tips } = useLoaderData<ReturnType<typeof matchesLoader>>();
@@ -111,7 +113,7 @@ export default function MatchesRoute() {
         ) : null}
       </div>
       <div className="mt-6">
-        <TipsTable match={match} tips={tips} />
+        <TipsTable players={players} match={match} tips={tips} />
       </div>
     </div>
   );
