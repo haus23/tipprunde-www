@@ -88,7 +88,7 @@ export default function TablesRoute() {
                 <td className="px-2 text-center last:pr-4 md:px-6">
                   {p.totalPoints}
                 </td>
-                {!championship.completed && (
+                {!championship.completed && currentTips.length > 0 && (
                   <td>
                     <div className="flex items-center pr-2">
                       <InfoBox
