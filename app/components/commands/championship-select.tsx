@@ -48,7 +48,7 @@ export function ChampionshipSelect() {
     navigate(
       {
         pathname: `/${[championshipSegment, viewSegment].filter(Boolean).join('/')}`,
-        search,
+        search: viewSegment === 'spiel' ? '' : search,
       },
       { viewTransition: true },
     );
