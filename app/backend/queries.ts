@@ -1,4 +1,5 @@
 import {
+  Account,
   Championship,
   CurrentTips,
   MatchTips,
@@ -23,6 +24,18 @@ export const championshipsQuery = () =>
   queryOptions({
     queryKey: ['championships'],
     queryFn: fetchChampionships,
+  });
+
+async function fetchAccounts() {
+  console.log('Fetching accounts');
+  const response = await fetch(`${baseUrl}/accounts`);
+  return z.array(Account).parseAsync(await response.json());
+}
+
+export const accountsQuery = () =>
+  queryOptions({
+    queryKey: ['accounts'],
+    queryFn: fetchAccounts,
   });
 
 async function fetchPlayers(championshipId: string) {
