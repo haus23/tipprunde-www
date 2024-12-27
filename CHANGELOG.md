@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.10.1
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.10.0...v0.10.1)
+
+### 🚀 Enhancements
+
+- Fetch account data as well. ([25d2a19](https://github.com/haus23/tipprunde-www/commit/25d2a19))
+- Handle player name problems. ([f1e2e98](https://github.com/haus23/tipprunde-www/commit/f1e2e98))
+
+### 🩹 Fixes
+
+- Handle app errors more meaningful. ([cba3df7](https://github.com/haus23/tipprunde-www/commit/cba3df7))
+
+### 💅 Refactors
+
+- Omit search when switching championships on matches route. ([96f0788](https://github.com/haus23/tipprunde-www/commit/96f0788))
+- Prepare for future backend changes. ([13c3b51](https://github.com/haus23/tipprunde-www/commit/13c3b51))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.10.0
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.9.9...v0.10.0)
