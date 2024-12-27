@@ -1,5 +1,5 @@
 import { FaceFrownIcon } from '@heroicons/react/24/outline';
-import { useLocation } from 'react-router';
+import { isRouteErrorResponse, useLocation, useRouteError } from 'react-router';
 import { Link } from '#/components/(ui)/atoms/link';
 
 export function ErrorBoundary() {
@@ -27,7 +27,14 @@ export function ErrorBoundary() {
   );
 }
 
-export function NotFoundBoundary() {
+export function AppErrorBoundary() {
+  const error = useRouteError();
+  let errorMsg = 'Hoppla, hier stimmt was nicht.';
+
+  if (isRouteErrorResponse(error)) {
+    errorMsg = error.data;
+  }
+
   return (
     <div
       id="error"
@@ -37,7 +44,7 @@ export function NotFoundBoundary() {
         <FaceFrownIcon className="h-40" />
       </div>
       <p className="mx-4 text-center text-3xl leading-snug [text-wrap:balance]">
-        Hoppla, so etwas gibt es bei uns nicht!
+        {errorMsg}
       </p>
       <Link to="/" className="mt-4 block text-2xl hover:underline">
         Zur Startseite

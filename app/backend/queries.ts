@@ -7,6 +7,7 @@ import {
   PlayerTips,
 } from '@haus23/tipprunde-types';
 import { queryOptions } from '@tanstack/react-query';
+import { data } from 'react-router';
 import { z } from 'zod';
 
 const backendHost = 'https://backend.runde.tips';
@@ -87,6 +88,10 @@ async function fetchMatchTips(championshipId: string, nr: string | null) {
 
   const url = `${baseUrl}/championships/${championshipId}/match-tips${query}`;
   const response = await fetch(url);
+  if (response.status === 404) {
+    throw data('Dieses Spiel gibt es nicht in dieser Runde.', 404);
+  }
+
   return MatchTips.parseAsync(await response.json());
 }
 
