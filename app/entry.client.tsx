@@ -18,6 +18,8 @@ import TablesRoute from './routes/tables/_route';
 import { tablesLoader } from './routes/tables/_route.data';
 
 import './styles/tailwind.css';
+import { MatchesErrorBoundary } from './routes/matches/_route.error';
+import { PlayersErrorBoundary } from './routes/players/_route.error';
 
 const container = document.getElementById('root');
 if (!container) throw Error('Missing root element!');
@@ -54,12 +56,14 @@ const router = createBrowserRouter([
             path: 'spieler',
             loader: playersLoader(queryClient),
             element: <PlayersRoute />,
+            errorElement: <PlayersErrorBoundary />,
             handle: { viewPath: 'spieler' },
           },
           {
             path: 'spiel',
             loader: matchesLoader(queryClient),
             element: <MatchesRoute />,
+            errorElement: <MatchesErrorBoundary />,
             handle: { viewPath: 'spiel' },
           },
         ],
