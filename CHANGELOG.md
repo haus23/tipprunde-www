@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.10.2
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.10.1...v0.10.2)
+
+### 🚀 Enhancements
+
+- Provide custom error boundaries. ([687ce12](https://github.com/haus23/tipprunde-www/commit/687ce12))
+- Redirect legacy routes. ([caa0fab](https://github.com/haus23/tipprunde-www/commit/caa0fab))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.10.1
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.10.0...v0.10.1)
