@@ -20,6 +20,7 @@ import { tablesLoader } from './routes/tables/_route.data';
 import './styles/tailwind.css';
 import { MatchesErrorBoundary } from './routes/matches/_route.error';
 import { PlayersErrorBoundary } from './routes/players/_route.error';
+import { redirectLegacyRoute } from './utils/app/redirect-legacy-route';
 
 const container = document.getElementById('root');
 if (!container) throw Error('Missing root element!');
@@ -65,6 +66,13 @@ const router = createBrowserRouter([
             element: <MatchesRoute />,
             errorElement: <MatchesErrorBoundary />,
             handle: { viewPath: 'spiel' },
+          },
+          {
+            path: 'tipps',
+            children: [
+              { path: 'spieler', loader: redirectLegacyRoute, element: null },
+              { path: 'spiel', loader: redirectLegacyRoute, element: null },
+            ],
           },
         ],
       },
