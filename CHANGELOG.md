@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.10.3
+
+[compare changes](https://github.com/haus23/tipprunde-www/compare/v0.10.2...v0.10.3)
+
+### 🏡 Chore
+
+- Add preconnect link to backend. ([8b57b62](https://github.com/haus23/tipprunde-www/commit/8b57b62))
+
+### ❤️ Contributors
+
+- Micha Buchholz <micha@haus23.net>
+
 ## v0.10.2
 
 [compare changes](https://github.com/haus23/tipprunde-www/compare/v0.10.1...v0.10.2)
