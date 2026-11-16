@@ -1,4 +1,4 @@
-@layer base, rmx, app;
+/* Resets and tokens. Component styles from `hono/css` are unlayered, so they win. */
 
 @layer base {
   :root {

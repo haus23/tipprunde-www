@@ -2,33 +2,32 @@
   "compilerOptions": {
     // --- Environment ---------------------------------------------------------
     // Node's ESM rules: honors "type": "module" in package.json and the
-    // "exports" maps of packages like `remix`. Implies `moduleResolution: nodenext`.
+    // "exports" maps of packages like `hono`. Implies `moduleResolution: nodenext`.
     "module": "nodenext",
-    // Only load these global types instead of every @types package:
-    // Node globals (process, Buffer, ...) and `import.meta.hot` for HMR.
-    "types": ["node", "remix/assets/types/hmr"],
+    // Only load the Node globals (process, Buffer, ...) instead of every @types package.
+    "types": ["node"],
 
-    // --- Running .ts directly with Node (type stripping) ---------------------
-    // tsc only checks; Node runs the .ts files, so nothing is ever emitted.
+    // --- No build step ---------------------------------------------------------
+    // tsc only checks; tsx runs the .ts/.tsx files, so nothing is ever emitted.
     "noEmit": true,
-    // Allow `import ... from './app/router.ts'`, which Node needs to resolve files.
+    // Allow `import ... from './app/app.tsx'`: imports name the real file.
     "allowImportingTsExtensions": true,
     // Imports and exports stay exactly as written: type-only imports must use
     // `import type`, so stripping types never leaves a broken import behind.
     "verbatimModuleSyntax": true,
     // Error on TypeScript features that need code generation (enums, namespaces,
-    // parameter properties), which Node's type stripping cannot run.
+    // parameter properties), so the code stays plain JavaScript plus types.
     "erasableSyntaxOnly": true,
-    // Every file must be understandable on its own, without type information
-    // from other files, as is the case for single-file transforms like Node's.
+    // Every file must be understandable on its own, as single-file transforms
+    // like tsx (esbuild) require.
     "isolatedModules": true,
 
     // --- JSX -----------------------------------------------------------------
     // Use the automatic JSX runtime: no manual import needed in .tsx files;
     // calls to jsx() are imported from `<jsxImportSource>/jsx-runtime` for you.
     "jsx": "react-jsx",
-    // Take that runtime and the JSX types from Remix components, not React.
-    "jsxImportSource": "remix/component",
+    // Take that runtime and the JSX types from Hono's JSX, not React.
+    "jsxImportSource": "hono/jsx",
 
     // --- Type checking -------------------------------------------------------
     // Enable the full set of strict checks (strictNullChecks, noImplicitAny, ...).
