@@ -1,4 +1,21 @@
 {
   "name": "@tipprunde/www",
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "start": "node --import remix/node-tsx server.ts",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "remix": "^3.2.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7",
+    "@types/node": "^26.6.6",
+    "typescript": "~7.0.2"
+  },
+  "engines": {
+    "node": "26"
+  },
+  "packageManager": "pnpm@12.18.0"
 }
