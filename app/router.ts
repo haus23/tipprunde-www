@@ -1,6 +1,6 @@
 import { render } from "remix/middleware/render";
 import { createRouter, type RouterContext } from "remix/router";
-import { appController } from "./controller.tsx";
+import controller from "./actions/controller.tsx";
 import { routes } from "./routes.ts";
 
 export const router = createRouter({ middleware: [render()] });
@@ -13,4 +13,4 @@ declare module "remix" {
   }
 }
 
-router.map(routes, appController);
+router.map(routes, controller);
