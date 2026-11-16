@@ -1,5 +1,6 @@
 import * as http from "node:http";
 import { createRequestListener } from "remix/node-fetch-server";
+import { assets } from "./app/assets.ts";
 import { router } from "./app/router.ts";
 
 const port = Number(process.env.PORT ?? 3000);
@@ -17,7 +18,7 @@ function shutdown() {
   }
 
   shuttingDown = true;
-  server.close();
+  server.close(() => assets.close().finally(() => process.exit(0)));
   server.closeAllConnections();
 }
 

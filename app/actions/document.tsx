@@ -1,4 +1,5 @@
 import type { Handle, RemixNode } from "remix/component";
+import { stylesheetHref } from "../assets.ts";
 
 export interface DocumentProps {
   title?: string;
@@ -15,6 +16,8 @@ export function Document(handle: Handle<DocumentProps>) {
           <meta charSet="utf-8" />
           <meta name="viewport" content="width=device-width" />
           <title>{title}</title>
+          <link rel="icon" href="/favicon.ico" sizes="any" />
+          <link rel="stylesheet" href={stylesheetHref} />
         </head>
         <body>{children}</body>
       </html>
