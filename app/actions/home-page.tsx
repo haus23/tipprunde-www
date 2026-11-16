@@ -1,10 +1,12 @@
+import type { ScriptEntry } from "remix/assets";
+import type { Handle } from "remix/component";
 import { css } from "remix/component";
 import { Logo } from "../ui/logo.tsx";
 import { Document } from "./document.tsx";
 
-export function HomePage() {
+export function HomePage(handle: Handle<{ scriptEntry: ScriptEntry }>) {
   return () => (
-    <Document title="runde.tips">
+    <Document scriptEntry={handle.props.scriptEntry}>
       <main mix={pageStyles}>
         <div mix={heroStyles}>
           <div mix={logoBoxStyles}>

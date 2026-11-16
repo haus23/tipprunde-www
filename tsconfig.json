@@ -4,9 +4,9 @@
     // Node's ESM rules: honors "type": "module" in package.json and the
     // "exports" maps of packages like `remix`. Implies `moduleResolution: nodenext`.
     "module": "nodenext",
-    // Only load the Node globals (process, Buffer, ...) from @types/node
-    // instead of every @types package in node_modules.
-    "types": ["node"],
+    // Only load these global types instead of every @types package:
+    // Node globals (process, Buffer, ...) and `import.meta.hot` for HMR.
+    "types": ["node", "remix/assets/types/hmr"],
 
     // --- Running .ts directly with Node (type stripping) ---------------------
     // tsc only checks; Node runs the .ts files, so nothing is ever emitted.

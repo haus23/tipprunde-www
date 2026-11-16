@@ -4,6 +4,7 @@
   "type": "module",
   "scripts": {
     "start": "node --import remix/node-tsx server.ts",
+    "dev": "node dev-server.ts",
     "typecheck": "tsc"
   },
   "dependencies": {
