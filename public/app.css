@@ -5,11 +5,16 @@
     /* Follow the OS setting; light-dark() picks the matching value. */
     color-scheme: light dark;
 
-    /* Neutrals are tinted towards the accent so they belong together. */
-    --color-bg: light-dark(#ffffff, #131510);
+    /* Camouflage palette: neutrals tinted towards the olive accent. */
+    --color-bg: light-dark(#f4f5ef, #121410);
+    --color-surface: light-dark(#ffffff, #1a1d16);
+    --color-surface-strong: light-dark(#e8ebdc, #252a1e);
+    --color-border: light-dark(#dcdfcf, #2e3326);
     --color-fg: light-dark(#1b1e17, #e6e9df);
+    --color-muted: light-dark(#5e6551, #9ca28d);
     /* Olive drab: darker on light backgrounds, lighter on dark ones. */
     --color-accent: light-dark(#4b5320, #8f9e5f);
+    --color-on-accent: light-dark(#ffffff, #121410);
   }
 
   * {
