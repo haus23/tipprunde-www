@@ -1,6 +1,17 @@
 @layer base, rmx, app;
 
 @layer base {
+  :root {
+    /* Follow the OS setting; light-dark() picks the matching value. */
+    color-scheme: light dark;
+
+    /* Neutrals are tinted towards the accent so they belong together. */
+    --color-bg: light-dark(#ffffff, #131510);
+    --color-fg: light-dark(#1b1e17, #e6e9df);
+    /* Olive drab: darker on light backgrounds, lighter on dark ones. */
+    --color-accent: light-dark(#4b5320, #8f9e5f);
+  }
+
   * {
     margin: 0;
   }
@@ -12,6 +23,8 @@
   }
 
   body {
+    background-color: var(--color-bg);
+    color: var(--color-fg);
     font-family: system-ui, sans-serif;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
